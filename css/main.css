@@ -1,0 +1,216 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: rgb(216, 255, 255);
+    --bg-color-2: rgb(119, 119, 119);
+    --font-color: rgb(32, 32, 32);
+    --font-color-2: rgb(195, 231, 255);
+    --font-color-white: rgb(222, 231, 236);
+    --font-size: clamp(0.5rem, 1vw, 15px);
+
+    --top-bar-bg-color: rgb(216, 255, 255, 0.5);
+    --shadow-color: rgb(70, 70, 70);
+    
+    font-size: var(--font-size);
+}
+
+html{
+    scroll-behavior: smooth;
+    scroll-snap-type: start;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.content-wrapper{
+    position: absolute;
+    width: 90vw;
+}
+
+section{
+    display: flex;
+    padding-top: 5rem;
+    font-size: 1.5rem;
+}
+section > .half-divided{
+    width: 50%;
+    padding-right: 2rem;
+}
+section .title{
+    font-size: 2.5rem;
+}
+section .desc{
+    margin-top: 1rem;
+}
+
+/* Specific Sections */
+.bg-shape{
+    position: absolute;
+    top: -20rem;
+    right: -15rem;
+    width: 60rem;
+    height: 60rem;
+    border-radius: 50%;
+    background-color: rgb(153, 191, 248);
+    z-index: -1;
+}
+.bg-shape-2{
+    position: absolute;
+    top: 60rem;
+    left: -10rem;
+    width: 30rem;
+    height: 30rem;
+    background-color: rgb(142, 247, 159);
+    z-index: -1;
+}
+
+.version-chooser{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.678);
+    font-size: 4rem;
+    color: var(--font-color-white);
+    transition: opacity 100ms;
+    opacity: 1;
+}
+.version-chooser.hidden{
+    display: none;
+}
+.version-chooser .chooser-title{
+    font-size: 2rem;
+}
+.version-chooser .version-box{
+    border: 1px solid var(--bg-color);
+    border-radius: 0.8rem;
+    padding: 2rem;
+}
+.grid-versions{
+    padding: 2rem;
+    display: grid;
+    grid-template-areas: "a a" "b c";
+    gap: 1rem;
+    color: var(--font-color-2);
+}
+.grid-versions > div{
+    text-align: center;
+    transition: background-color 500ms, color 500ms;
+}
+.grid-versions > div:hover{
+    background-color: var(--font-color-2);
+    color: var(--font-color);
+}
+
+.top-bar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 6rem;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    background-color: var(--top-bar-bg-color);
+    z-index: 5;
+}
+.top-bar .name-item{
+    position: relative;
+    margin-right: auto;
+}
+.top-bar .item{
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 2rem;
+}
+.top-bar .item::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 2.5rem);
+    height: 1px;
+    background-color: black;
+    padding-left: 1.2rem;
+    transition: transform 200ms;
+    transform: scaleX(0);
+    transform-origin: left;
+    
+}
+.top-bar .item:hover::before{
+    transform: scaleX(1);
+}
+
+/* Content Sections */
+/* INTRO */
+.intro{
+    height: min-content;
+    padding-top: 10rem;
+}
+.intro .right{
+    padding-left: 1rem;
+}
+.intro .collector-view{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-rows: min-content;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+.intro .collector-view .photo-card{
+    width: inherit;
+}
+.intro .photo-card.animating{
+    width: 30rem;
+    height: 45vh;
+    font-size: 1.5rem;
+    box-shadow: 0 0 2rem var(--shadow-color);
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+.intro .photo-card:hover{
+    transform: scale(1.05);
+}
+@media only screen and (max-width: 600px) {
+    .intro{
+        flex-direction: column;
+    }
+    .intro .half-divided{
+        width: inherit;
+    }
+    .intro .right{
+        padding-left: 0;
+    }
+    .intro .left{
+        padding-bottom: 4rem;
+    }
+}
+
+/* PROJECTS */
+.projects{
+    height: 100vh;
+    padding-top: 10rem;
+}

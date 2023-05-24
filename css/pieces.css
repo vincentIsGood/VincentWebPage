@@ -1,0 +1,70 @@
+.char-wrapper{
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+.char-wrapper span{
+    position: relative;
+    display: inline-block;
+}
+.char-wrapper.space{
+    width: 0.7rem;
+}
+
+.collapsable{
+    overflow: hidden;
+}
+.collapsable .desc{
+    max-height: 100%;
+    opacity: 1;
+    padding: 1rem;
+    margin: 0;
+    transition: max-height 200ms, opacity 200ms, padding 200ms;
+}
+.collapsable .desc.hidden{
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+.card-like{
+    padding: 1rem;
+    border: 1px solid var(--font-color);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    background-color: none;
+    transition: background-color 200ms, transform 200ms;
+}
+.card-like:hover{
+    background-color: var(--bg-color-2);
+    color: var(--font-color-2);
+}
+
+.photo-card{
+    position: relative;
+    width: 20rem;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    transition: all 300ms;
+    overflow: hidden;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+}
+.photo-card img{
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+}
+.photo-card .desc-wrapper{
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--font-color));
+    color: var(--font-color-2);
+    padding: 1rem;
+}

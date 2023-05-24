@@ -1,0 +1,32 @@
+MISTAKE: Reduce large scale animations (no fancy timeline)
+DO: use tabs, maybe
+
+Collapse timeline (don't show it out, too long)
+Collapse old personal sites (but do add a way to take a look back in my old personal websites)
+
+Better intro.
+With drawings & gpt responses-like design
+Change between drawings and the responses by timeout or whatever.
+
+Show skills.
+Show projects instead of JUST skills
+
+Future
+
+Contact
+
+Overall, I want better presentation:
+1. Small box (eg. icon) expand to details
+2. Add media (eg. screenshot of works, make it like news: https://genshin.hoyoverse.com/en/news)
+3. Better design of titles?
+
+## Japanese Version
+To be determined.
+
+## References
+https://developer.mozilla.org/en-US/docs/Web/API/Element/animate
+
+https://github.com/flackr/scroll-timeline
+https://flackr.github.io/scroll-timeline/demo/parallax/
+
+https://www.youtube.com/watch?v=VgS5CP7zlXE
