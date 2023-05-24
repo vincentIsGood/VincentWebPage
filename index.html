@@ -24,7 +24,7 @@
         </div>
         <div class="content-wrapper">
             <div class="parallax-bg-shape bg-shape"></div>
-            <div class="parallax-bg-shape bg-shape-2"></div>
+            <!-- <div class="parallax-bg-shape bg-shape-2"></div> -->
             <section id="intro" class="intro">
                 <div class="half-divided left">
                     <div class="title">Software Developer</div>
@@ -106,11 +106,76 @@
                 </div>
             </section>
             <section id="projects" class="projects">
-                <div class="half-divided left">
-                    <div class="title">Projects</div>
+                <div class="top">
+                    <div class="title">Main Projects</div>
+                    <div class="grid-desc">
+                        <div class="collapsable card-like" style="grid-area: b;">
+                            <div class="sub-title">JishoNotes</div>
+                            <div class="tag bluish">Public</div>
+                            <div class="desc hidden">
+                                This is my largest project using Java Spring, PostgreSQL, ElasticSearch,
+                                GPT-2, Social Login and RSS for news retrieval. Any new technologies 
+                                which can be used to improve my japanese skill are included into one app.
+                            </div>
+                        </div>
+                        <div class="collapsable card-like" style="grid-area: a;">
+                            <div class="sub-title">AdvancedWebServer</div>
+                            <div class="tag bluish">Public</div>
+                            <div class="desc hidden">
+                                I got my hands dirty and started implementing HTTP/1.1, HTTP/2 and WebSocket
+                                from scratch. IETF's documents are read during the implementation. The server
+                                is still being used privately today.
+                            </div>
+                        </div>
+                        <div class="collapsable card-like">
+                            <div class="sub-title">JDesktopPet</div>
+                            <div class="tag reddish">Private</div>
+                            <div class="desc hidden">
+                                I longed for a walking pet in my desktop. However, I want to create 
+                                one myself, without using any 3rd-party libraries. Process include 
+                                developing, drawing, and animating of the pet.
+                            </div>
+                        </div>
+                        <div class="collapsable card-like">
+                            <div class="sub-title">Vulnapp</div>
+                            <div class="tag bluish">Public</div>
+                            <div class="desc hidden">
+                                A simple web application made with many vulnerabilities, demonstrating 
+                                common web application exploits, including XSS, LFI, Session Hijacking, etc.
+                            </div>
+                        </div>
+                        <div class="collapsable card-like">
+                            <div class="sub-title">M3u8Downloader</div>
+                            <div class="tag bluish">Public</div>
+                            <div class="desc hidden">
+                                It is one of the many programs I created still being used today. From parsing 
+                                an m3u8 file to using multithreading to download large pile of files, this
+                                is by no means a simple project. 
+                            </div>
+                        </div>
+                        <div class="collapsable card-like">
+                            <div class="sub-title">Chrome Remote Network Logger</div>
+                            <div class="tag bluish">Public</div>
+                            <div class="desc hidden">
+                                Often got tricked by many "developer tools disabled" websites. Here, a 
+                                rarely heard protocol called Chrome DevTools Protocol is used to connect
+                                to and manipulate a browser.
+                            </div>
+                        </div>
+                        <div class="collapsable card-like" style="grid-area: c;">
+                            <div class="sub-title">More on Github</div>
+                            <div class="desc hidden">
+                                Many more projects are available on Github. From simple proof of concept like,
+                                MultiHandlerJava; to computer science projects like, JavaCpuSimulator; to script
+                                like utilities like, DtdToJavaClass, Seekable Picture-In-Picture, JMarkdown; to 
+                                working web apps like JishoNotes.
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="half-divided right">
+                <div class="bottom">
                     <div class="title">Skills</div>
+                    <div class="content"></div>
                 </div>
             </section>
             <section id="future" class="future"></section>

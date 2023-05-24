@@ -12,6 +12,9 @@
     --font-color-white: rgb(222, 231, 236);
     --font-size: clamp(0.5rem, 1vw, 15px);
 
+    --card-tag-color: rgb(69, 66, 214);
+    --card-tag-color-2: rgb(255, 51, 0);
+
     --top-bar-bg-color: rgb(216, 255, 255, 0.5);
     --shadow-color: rgb(70, 70, 70);
     
@@ -171,6 +174,9 @@ section .desc{
 .intro .right{
     padding-left: 1rem;
 }
+.intro .right .title{
+    text-align: center;
+}
 .intro .collector-view{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
@@ -194,7 +200,7 @@ section .desc{
 .intro .photo-card:hover{
     transform: scale(1.05);
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .intro{
         flex-direction: column;
     }
@@ -211,6 +217,17 @@ section .desc{
 
 /* PROJECTS */
 .projects{
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    padding-top: 10rem;
+    padding-top: 5rem;
+    text-align: center;
+}
+.projects .grid-desc{
+    display: grid;
+    grid-template-areas: "a a b" "d e b" "f g b" "c c c";
+    gap: 1rem;
+}
+.projects .top{
+    padding-bottom: 6rem;
 }

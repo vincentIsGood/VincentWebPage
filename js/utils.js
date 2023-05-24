@@ -28,10 +28,12 @@ class GeneralUtils{
 
 class PositionUtils{
     /**
+     * Get absolute position (often, relative to document.body)
      * @param {HTMLElement} targetElement
      * @param {HTMLElement} relativeElement if null, body is used
      */
     static absPos(targetElement, relativeElement){
+        if(!targetElement) throw new Error("Invalid target element");
         if(!relativeElement) relativeElement = document.body;
 
         let targetEleRect = targetElement.getBoundingClientRect();
@@ -47,6 +49,7 @@ class PositionUtils{
      * @param {HTMLElement} relativeElement if null, body is used
      */
     static centerPos(targetElement, relativeElement){
+        if(!targetElement) throw new Error("Invalid target element");
         let pos = PositionUtils.absPos(targetElement, relativeElement);
         let targetEleRect = targetElement.getBoundingClientRect();
         return {
@@ -60,19 +63,21 @@ class PositionUtils{
      * @param {{x: number, y: number}} targetPos
      */
     static offsetToPos(targetElement, targetPos, originallyTopLeftOrigin = true){
+        if(!targetElement) throw new Error("Invalid target element");
         let abs = PositionUtils.absPos(targetElement);
         let targetRect = targetElement.getBoundingClientRect();
         return {
-            x: targetPos.x - abs.x - (originallyTopLeftOrigin? targetRect.width/2 : 0),
-            y: targetPos.y - abs.y - (originallyTopLeftOrigin? targetRect.height/2 : 0),
+            x: resolveCssValue(targetPos.x) - abs.x - (originallyTopLeftOrigin? targetRect.width/2 : 0),
+            y: resolveCssValue(targetPos.y) - abs.y - (originallyTopLeftOrigin? targetRect.height/2 : 0),
         };
     }
 
     static offsetToCenter(sourceElement, elementForCenter, offset = {x: 0, y: 0}){
+        if(!sourceElement) throw new Error("Invalid source element");
         let center = PositionUtils.centerPos(elementForCenter);
         let pos = {
-            x: center.x + offset.x, 
-            y: center.y + offset.y
+            x: center.x + resolveCssValue(offset.x), 
+            y: center.y + resolveCssValue(offset.y)
         };
         return PositionUtils.offsetToPos(sourceElement, pos);
     }
@@ -113,26 +118,14 @@ class ScrollUtilsOption{
      * @returns {number}
      */
     start(){
-        if(this.startStr == null) return 0;
-        if(typeof(this.startStr) === "number")
-            return this.startStr;
-        if(this.startStr.endsWith("rem")){
-            return this.startStr = parseFloat(this.startStr) * parseFloat(getComputedStyle(document.documentElement).fontSize);
-        }
-        return this.startStr = parseFloat(this.startStr);
+        return this.startStr = resolveCssValue(this.startStr);
     }
 
     /**
      * @returns {number}
      */
     end(){
-        if(this.endStr == null) return 0;
-        if(typeof(this.endStr) === "number")
-            return this.endStr;
-        if(this.endStr.endsWith("rem")){
-            return this.endStr = parseFloat(this.endStr) * parseFloat(getComputedStyle(document.documentElement).fontSize);
-        }
-        return this.endStr = parseFloat(this.endStr);
+        return this.endStr = resolveCssValue(this.endStr);
     }
 }
 
@@ -198,6 +191,8 @@ class ScrollUtils{
     }
 
     /**
+     * `callback` of the listener will be called according to the `options` variable.
+     * If no options are available, callback will be invoked when `scroll` happens.
      * @param {ListenerCallback} listener
      */
     registerListener(listener){
@@ -295,4 +290,51 @@ class AnimationUtils{
     }
 }
 
-export {GeneralUtils, PositionUtils, ScrollUtils, ScrollUtilsOption, AnimationUtils};
+class ScrollTemplates{
+    /**
+     * @param {ScrollUtils} scrollUtils 
+     * @param {HTMLElement} targetElement 
+     */
+    static animateCharactersAt(scrollUtils, targetElement, delay = 0, startOffsetY = 0){
+        scrollUtils.registerListener({
+            callback: (a, b, c, finish)=>{
+                AnimationUtils.animateCharacters(targetElement);
+                finish();
+            },
+            option: new ScrollUtilsOption({
+                startY: PositionUtils.absPos(targetElement).y + resolveCssValue(startOffsetY),
+                delay,
+            }),
+        });
+    }
+}
+
+/**
+ * @param {string | number} strCss px or rem 
+ * @returns {number}
+ */
+function resolveCssValue(strCss){
+    if(strCss == null) return 0;
+    if(typeof(strCss) === "number")
+        return strCss;
+    if(strCss.endsWith("rem")){
+        return parseFloat(strCss) * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    }
+    if(strCss.endsWith("vw")){
+        return parseFloat(strCss)/100 * window.innerWidth;
+    }
+    if(strCss.endsWith("vh")){
+        return parseFloat(strCss)/100 * window.innerHeight;
+    }
+    return parseFloat(strCss);
+}
+
+export {
+    resolveCssValue,
+    GeneralUtils, 
+    PositionUtils, 
+    ScrollUtils, 
+    ScrollUtilsOption, 
+    AnimationUtils, 
+    ScrollTemplates
+};

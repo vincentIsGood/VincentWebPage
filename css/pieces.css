@@ -28,12 +28,29 @@
 }
 
 .card-like{
+    position: relative;
     padding: 1rem;
     border: 1px solid var(--font-color);
     border-radius: 0.5rem;
     margin-top: 1rem;
     background-color: none;
     transition: background-color 200ms, transform 200ms;
+}
+.card-like .tag{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0 0 0.5rem 0;
+}
+.card-like .tag.bluish{
+    background-color: var(--card-tag-color);
+    color: var(--font-color-white);
+}
+.card-like .tag.reddish{
+    background-color: var(--card-tag-color-2);
+    color: var(--font-color-white);
 }
 .card-like:hover{
     background-color: var(--bg-color-2);
