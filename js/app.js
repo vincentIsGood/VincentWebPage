@@ -5,7 +5,7 @@ let scrollUtils = new ScrollUtils();
 
 window.onload = ()=>{
     // TODO: create loading screen (then clear it out at the bottom of this function)
-    // window.scrollUtils = scrollUtils; // for debug
+    window.scrollUtils = scrollUtils; // for debug
 
     AnimationUtils.initCharacters(document.querySelector(".top-bar .name-item"));
     AnimationUtils.animateCharacters(document.querySelector(".top-bar .name-item"));
@@ -37,7 +37,7 @@ function setupIntro(){
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .left .title"), 500, "-10rem");
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .right .title"), 500, "-10rem");
     
-    GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i)=>{
+    GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element)=>{
         let offset = PositionUtils.offsetToCenter(element, 
             document.querySelector(".intro .collector-view"), {x: 0, y: "-8rem"});
         element.style.left = `${offset.x}px`;
@@ -73,7 +73,7 @@ function setupIntro(){
 function setupProjects(){
     GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-80vh");
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .bottom .title"), 0, "-80vh");
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .bottom .title"), 0, "-100vh");
 
     GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
         GeneralUtils.registerCssClassToggle(element, element.querySelector(".desc"), "hidden");
@@ -90,12 +90,20 @@ function setupProjects(){
                         duration: 500,
                         delay: i*200,
                     }
-                );
-                finish();
+                ).addEventListener("finish", finish);
             },
             option: new ScrollUtilsOption({
                 startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-80vh"),
             }),
         });
+
+        element.querySelector(".link")?.animate(
+            {transform: ["translateX(-0.5rem)", "translateX(0)", "translateX(-0.5rem)"]},
+            {
+                iterations: Infinity,
+                delay: 1000,
+                duration: 2000,
+            }
+        );
     });
 }

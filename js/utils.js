@@ -129,8 +129,13 @@ class ScrollUtilsOption{
     }
 }
 
+/**
+ * Scrolling listener
+ */
 class ListenerCallback{
     /**
+     * If you are doing animations, you are recommended to addEventListener on its finish event.
+     * (eg. `Animation.addEventListener("finish", finish);`)
      * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function)=>{}}
      */
     callback;
@@ -138,6 +143,13 @@ class ListenerCallback{
      * @type {ScrollUtilsOption}
      */
     option;
+
+    /**
+     * @type {boolean}
+     */
+    running = false;
+
+    finished = false;
 }
 
 class ScrollUtils{
@@ -146,6 +158,7 @@ class ScrollUtils{
          * @type {ListenerCallback[]}
          */
         this.listeners = [];
+        this.listenersBeDeleted = [];
     }
 
     registerDocumentScroll(){
@@ -157,36 +170,62 @@ class ScrollUtils{
         let scrollY = window.scrollY;
         for(let i = this.listeners.length-1; i >= 0; i--){
             let listener = this.listeners[i];
-            let listenerOption = listener.option;
-            let finishFunction = ()=>{
+            // delete it if it is finished
+            if(listener.finished){
                 this.listeners.splice(i, 1);
+                continue;
             }
+        }
+        for(let i = this.listeners.length-1; i >= 0; i--){
+            let listener = this.listeners[i];
+            let listenerOption = listener.option;
+
+            if(listener.running || listener.finished) continue;
 
             // run on no option as well
             if(!listenerOption || (!listenerOption.hasStart() && !listenerOption.hasEnd())
             || (listenerOption.hasStart() && listenerOption.hasEnd() && scrollY >= listenerOption.start() && scrollY <= listenerOption.end())
             || (listenerOption.hasStart() && !listenerOption.hasEnd() && scrollY >= listenerOption.start())
             || (!listenerOption.hasStart() && listenerOption.hasEnd() && scrollY <= listenerOption.start())){
-                if(!listener.callback) continue;
+                listener.running = true;
+                if(!listener.callback){
+                    listener.finished = true;
+                    continue;
+                }
 
                 if(listenerOption.delay > 0){
                     setTimeout(()=>{
+                        let finishFunction = ()=>{
+                            listener.finished = true;
+                        }
                         listener.callback(
                             scrollY, 
                             listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                             listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
                             finishFunction);
+                        listener.running = false;
                     }, listenerOption.delay);
                     continue;
                 }
 
+                let finishFunction = ()=>{
+                    listener.finished = true;
+                }
                 listener.callback(
                     scrollY, 
                     listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                     listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
                     finishFunction);
+                listener.running = false;
                 continue;
             }
+        }
+        this.listeners.push(...this.listenersBeDeleted);
+    }
+
+    deleteFinishedListeners(){
+        for(let indexToBeDeleted of this.removableListenerIndexes){
+            this.listeners.splice(indexToBeDeleted, 1);
         }
     }
 
@@ -213,8 +252,9 @@ class AnimationUtils{
 
     /**
      * @param {HTMLElement} targetElement
+     * @param {Function} finish animation finish event listener
      */
-    static animateCharacters(targetElement, interCharDelay = 100){
+    static animateCharacters(targetElement, finish, interCharDelay = 100){
         GeneralUtils.iterate(targetElement.querySelectorAll(".char-wrapper span"), (element, i)=>{
             element.animate({
                 transform: ["translateY(4rem)", "translateY(0)"],
@@ -222,7 +262,7 @@ class AnimationUtils{
                 fill: "forwards",
                 delay: interCharDelay*i,
                 duration: interCharDelay,
-            });
+            }).addEventListener("finish", finish, {once: true});
         });
     }
 
@@ -298,8 +338,7 @@ class ScrollTemplates{
     static animateCharactersAt(scrollUtils, targetElement, delay = 0, startOffsetY = 0){
         scrollUtils.registerListener({
             callback: (a, b, c, finish)=>{
-                AnimationUtils.animateCharacters(targetElement);
-                finish();
+                AnimationUtils.animateCharacters(targetElement, finish);
             },
             option: new ScrollUtilsOption({
                 startY: PositionUtils.absPos(targetElement).y + resolveCssValue(startOffsetY),
