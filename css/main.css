@@ -17,6 +17,7 @@ background-image: linear-gradient()
     --font-color-2: rgb(195, 231, 255);
     --font-color-white: rgb(222, 231, 236);
     --font-size: clamp(0.5rem, 1vw, 15px);
+    --bg-clip-font-color: linear-gradient(97deg, rgb(255, 255, 255, 0.8), rgb(127, 182, 213));
 
     --card-tag-color: rgb(69, 66, 214);
     --card-tag-color-2: rgb(255, 51, 0);
@@ -287,6 +288,13 @@ section .desc{
     background-color: var(--bg-color-dark);
     padding-bottom: 16rem;
 }
+/* .skills .title, .skills .desc{
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: var(--bg-clip-font-color);
+    color: transparent;
+    font-weight: 700;
+} */
 .skills .content{
     display: flex;
     flex-direction: column;
@@ -323,12 +331,16 @@ section .desc{
 
 /* FUTURE */
 .future{
+    display: flex;
+    flex-direction: column;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
 }
 
 /* CONTACT */
 .contact{
+    display: flex;
+    flex-direction: column;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
 }
