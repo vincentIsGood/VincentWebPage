@@ -183,6 +183,9 @@ section .desc{
     height: min-content;
     padding-top: 10rem;
 }
+.intro .collapsable{
+    padding: 1.5rem 1rem;
+}
 .intro .collapsable:first-of-type{
     margin-top: 5rem;
 }
