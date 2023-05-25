@@ -1,0 +1,112 @@
+/*
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@300&display=swap');
+*/
+
+:root{
+    --left-panel-color: #2b3e49;
+
+    --text-color: rgb(233, 217, 217);
+    --text-color2: rgb(43, 42, 42);
+    --text-minor-color: #6f9092;
+
+    --sign-color: #96aaaa;
+
+    --section-padding-bot: 2rem;
+    --title-pad-bot: 0.5rem;
+    --title2-pad-bot: 1rem;
+    --item-pad-bot: 0.3rem;
+
+    --text-size-whole: 18px;
+    --text-size-left-panel: 16px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: var(--text-size-whole);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.content-wrapper{
+    width: 100%;
+    height: max(max-content, 100vh);
+    display: flex;
+    flex-direction: row;
+}
+
+.content-wrapper > *{
+    padding: 2rem;
+    padding-top: 4rem;
+    box-sizing: border-box;
+}
+
+.left-panel{
+    font-size: var(--text-size-left-panel);
+    width: 20rem;
+    background-color: var(--left-panel-color);
+    color: var(--text-color);
+}
+
+.right-panel{
+    color: var(--text-color2);
+}
+
+section{
+    padding-bottom: var(--section-padding-bot);
+}
+
+a:visited, a{
+    color: var(--text-color);
+    text-decoration: none;
+}
+.preserve-whitespace{
+    white-space: pre;
+}
+
+/* Small components */
+.sign{
+    color: var(--sign-color);
+}
+.item, .desc{
+    padding-bottom: var(--item-pad-bot);
+}
+.minor-desc{
+    color: var(--text-minor-color);
+    padding-bottom: var(--item-pad-bot);
+}
+
+.title{
+    font-size: 2.5rem;
+    padding-bottom: var(--title-pad-bot);
+}
+.smaller-title{
+    font-size: 2rem;
+    padding-bottom: var(--title2-pad-bot);
+}
+.sub-title{
+    font-size: 1.3rem;
+    padding-bottom: var(--title2-pad-bot);
+}
+.sub-title-nopad{
+    font-size: 1.3rem;
+}
+
+/* Specific */
+.skills-table{
+    font-size: 18px;
+    padding-bottom: 40px;
+}
+
+.skills-table td{
+    padding-bottom: 6px;
+    vertical-align: text-top;
+}
+
+.skills-table ul, .skills-table li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
