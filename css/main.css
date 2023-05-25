@@ -241,7 +241,7 @@ section .desc{
 .projects{
     display: flex;
     flex-direction: column;
-    padding-top: 5rem;
+    padding-top: 20rem;
     text-align: center;
 }
 .projects .top{

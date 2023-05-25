@@ -89,7 +89,7 @@ function setupIntro(){
 
 function setupProjects(){
     GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-80vh");
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-70vh");
 
     GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
         if(MOBILE_MODE){
@@ -114,7 +114,7 @@ function setupProjects(){
                 ).addEventListener("finish", finish, {once: true});
             },
             option: new ScrollUtilsOption({
-                startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-80vh"),
+                startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-70vh"),
             }),
         });
 
