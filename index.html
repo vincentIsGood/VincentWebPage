@@ -7,14 +7,15 @@
         <script src="./js/app.js" type="module" defer></script>
     </head>
     <body>
-        <div class="version-chooser hidden">
+        <!-- Do not go to old versions -->
+        <!-- <div class="version-chooser hidden">
             <div class="chooser-title">Choose Website Version</div>
             <div class="grid-versions">
                 <div class="version-box" style="grid-area: a;">Current Version</div>
                 <div class="version-box" style="grid-area: b;">Oldest</div>
                 <div class="version-box" style="grid-area: c;">Previous</div>
             </div>
-        </div>
+        </div> -->
         <div class="top-bar">
             <div class="name-item">Vincent Ko</div>
             <div class="item"><a href="#intro">Intro</a></div>
@@ -39,7 +40,7 @@
                         <div class="collapsable card-like">
                             <div class="sub-title">An experienced problem-solver</div>
                             <div class="desc hidden">
-                                Through many projects I developed over the years, 
+                                After working on many projects over the years, 
                                 I learned to deal with problems with calm and efficiency.
                             </div>
                         </div>
@@ -71,15 +72,7 @@
                     <div class="collector-view">
                         <!-- Higher priority stuff goes to the bottom of this list -->
                         <div class="collection-wrapper">
-                            <div class="photo-card animating">
-                                <img src="./media/jishoentry.jpeg" alt="jisho-entry">
-                                <div class="desc-wrapper">
-                                    <div class="desc">My private tool, JishoNotes, is the largest project I built.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collection-wrapper">
-                            <div class="photo-card animating">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
                                 <img src="./media/illust.png" alt="illust">
                                 <div class="desc-wrapper">
                                     <div class="desc">Drawing is fun. Creativity cannot be replaced by machines.</div>
@@ -87,18 +80,26 @@
                             </div>
                         </div>
                         <div class="collection-wrapper">
-                            <div class="photo-card animating">
-                                <img src="./media/travel.jpeg" alt="travel">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                                <img src="./media/bocchi.jpg" alt="travel">
                                 <div class="desc-wrapper">
-                                    <div class="desc">Travelling different areas, an eye-opening experience.</div>
+                                    <div class="desc">Anime. Stories & Musics are good. Characters are cute. Bravo.</div>
                                 </div>
                             </div>
                         </div>
                         <div class="collection-wrapper">
-                            <div class="photo-card animating">
-                                <img src="./media/bocchi.jpg" alt="travel">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                                <img src="./media/jishoentry.jpeg" alt="jisho-entry">
                                 <div class="desc-wrapper">
-                                    <div class="desc">Anime. Stories & Musics are good. Characters are cute. Bravo.</div>
+                                    <div class="desc">My private tool, JishoNotes, is the largest project I built.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collection-wrapper">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                                <img src="./media/travel.jpeg" alt="travel">
+                                <div class="desc-wrapper">
+                                    <div class="desc">Travelling different areas, an eye-opening experience.</div>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +114,7 @@
                             <div class="sub-title">JishoNotes</div>
                             <div class="tag bluish">Public</div>
                             <div class="desc hidden">
-                                This is my largest project using Java Spring, PostgreSQL, ElasticSearch,
+                                This is my largest project made using Java Spring, PostgreSQL, ElasticSearch,
                                 GPT-2, Social Login and RSS for news retrieval. Any new technologies 
                                 which can be used to improve my japanese skill are included into one app.
                                 <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/JishoNotesAPI">To Github</a></div>
@@ -134,16 +135,16 @@
                             <div class="tag reddish">Private</div>
                             <div class="desc hidden">
                                 I longed for a walking pet in my desktop. However, I want to create 
-                                one myself, without using any 3rd-party libraries. Process include 
-                                developing, drawing, and animating of the pet.
+                                one myself, without using any 3rd-party libraries. Process involves 
+                                developing an app, drawing, and animating of the pet.
                             </div>
                         </div>
                         <div class="collapsable card-like">
                             <div class="sub-title">Vulnapp</div>
                             <div class="tag bluish">Public</div>
                             <div class="desc hidden">
-                                A simple web application made with many vulnerabilities, demonstrating 
-                                common web application exploits, including XSS, LFI, Session Hijacking, etc.
+                                A simple web app made with many vulnerabilities, demonstrating 
+                                common web app exploits, including XSS, LFI, Session Hijacking, etc.
                                 <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/vulnapp">To Github</a></div>
                             </div>
                         </div>
@@ -158,13 +159,12 @@
                             </div>
                         </div>
                         <div class="collapsable card-like">
-                            <div class="sub-title">Chrome Remote Network Logger</div>
+                            <div class="sub-title">JMarkdown</div>
                             <div class="tag bluish">Public</div>
                             <div class="desc hidden">
-                                Often got tricked by many "developer tools disabled" websites. Here, a 
-                                rarely heard protocol called Chrome DevTools Protocol is used to connect
-                                to and manipulate a browser.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/ChromeRemoteNetworkLogger">To Github</a></div>
+                                I want a quick way to create a simple document or report. A solution to it is 
+                                to convert md files into htmls (then pdfs). The result is kinda fabulous. 
+                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/JMarkdown">To Github</a></div>
                             </div>
                         </div>
                         <div class="collapsable card-like" style="grid-area: c;">
@@ -179,13 +179,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="bottom">
-                    <div class="title">Skills</div>
-                    <div class="content"></div>
+            </section>
+            <section class="section-space"></section>
+            <section id="skills" class="skills">
+                <div class="title">Skills</div>
+                <div class="content">
+                    What is in my toolbox?
+                    <svg class="skills-timeline" width="800" height="600" viewBox="150 0 500 600">
+                        <path d="M 200 50 Q 350 150 400 300 Q 450 450 650 550" fill="transparent"></path>
+                        <circle class="point1" cx="200" cy="50" r="8" fill="transparent"></circle>
+                        <circle class="point2" cx="400" cy="300" r="8" fill="transparent"></circle>
+                        <circle class="point3" cx="650" cy="550" r="8" fill="transparent"></circle>
+                    </svg>
+                    <div class="skill-info front-end">ASD Computer Icon</div>
+                    <div class="skill-info internet">ASD Cloud Icon</div>
+                    <div class="skill-info back-end">ASD Server Icon</div>
                 </div>
             </section>
-            <section id="future" class="future"></section>
-            <section id="contact" class="contact"></section>
+            <section id="future" class="future">
+
+            </section>
+            <section id="contact" class="contact">
+
+            </section>
         </div>
     </body>
 </html>

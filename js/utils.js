@@ -1,13 +1,13 @@
 class GeneralUtils{
     /**
      * @param {ArrayLike} arraylike 
-     * @param {(element: HTMLElement, index: number)=>{}} callback 
+     * @param {(element: HTMLElement, index: number, length: number)=>{}} callback 
      */
     static iterate(arraylike, callback){
         if(!callback) return;
 
         for(let i = 0; i < arraylike.length; i++){
-            callback(arraylike[i], i);
+            callback(arraylike[i], i, arraylike.length);
         }
     }
 
@@ -101,10 +101,16 @@ class ScrollUtilsOption{
      */
     delay;
 
-    constructor({startY = null, endY = null, delay = 0}){
+    /**
+     * @type {boolean}
+     */
+    isInitSameAsOutside;
+
+    constructor({startY = null, endY = null, delay = 0, isInitSameAsOutside = false}){
         this.startStr = startY;
         this.endStr = endY;
         this.delay = delay;
+        this.isInitSameAsOutside = isInitSameAsOutside;
     }
 
     hasStart(){
@@ -134,9 +140,19 @@ class ScrollUtilsOption{
  */
 class ListenerCallback{
     /**
+     * [Optional] Callback which will be called on register. `receivedOptions` depends on your `options` 
+     * argument. `null` if you passed in a `null` value
+     * @type {(receivedOptions: ScrollUtilsOption)=>{}}
+     */
+    initCallback;
+
+    /**
      * If you are doing animations, you are recommended to addEventListener on its finish event.
-     * (eg. `Animation.addEventListener("finish", finish);`)
-     * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function)=>{}}
+     * (eg. `Animation.addEventListener("finish", finish);`). 
+     * @param {Function} finish `finish()` sets `finished` to `true`
+     * @param {Function} notFinish `notFinish()` will keep this listener's `running` to `false`, 
+     *                             so that this listener can run again next time you scroll
+     * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function, notFinish: Function)=>{}}
      */
     callback;
     /**
@@ -145,20 +161,83 @@ class ListenerCallback{
     option;
 
     /**
+     * [Optional] Called once when scroll is not in range (after being in range). Delay does not affect 
+     * this callback
+     * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number)=>{}}
+     */
+    outsideCallback;
+
+    outsideCalled = false;
+
+    /**
+     * Whether the callback has started. To stop it, 
+     * use `notFinish()` / `finish()` provided in the callback.
+     * 
+     * If false, the callback will be run again. It is useful
+     * when doing scrolling animations with constant updates.
      * @type {boolean}
      */
     running = false;
 
+    /**
+     * Indicates the use of this listener is finished.
+     * Listener is then removed from the `listeners` array.
+     */
     finished = false;
+
+    /**
+     * This builder is another option to create the same thing.
+     * @param {ScrollUtilsOption} options 
+     */
+    static builder(options){
+        return new ListenerCallbackBuilder(options);
+    }
 }
 
+class ListenerCallbackBuilder{
+    /**
+     * @param {ScrollUtilsOption} options 
+     */
+    constructor(options){
+        this.callbackInstance = new ListenerCallback();
+        this.callbackInstance.option = options;
+    }
+
+    /**
+     * @param {(receivedOptions: ScrollUtilsOption)=>{}} func 
+     */
+    initCallback(func){
+        this.callbackInstance.initCallback = func;
+    }
+
+    /**
+     * @param {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function, notFinish: Function)=>{}} func 
+     */
+    callback(func){
+        this.callbackInstance.callback = func;
+    }
+
+    /**
+     * @param {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number)=>{}} func 
+     */
+    outsideCallback(func){
+        this.callbackInstance.outsideCallback = func;
+    }
+
+    build(){
+        return this.callbackInstance;
+    }
+}
+
+/**
+ * Horizontal scroll only
+ */
 class ScrollUtils{
     constructor(){
         /**
          * @type {ListenerCallback[]}
          */
         this.listeners = [];
-        this.listenersBeDeleted = [];
     }
 
     registerDocumentScroll(){
@@ -179,7 +258,7 @@ class ScrollUtils{
         for(let i = this.listeners.length-1; i >= 0; i--){
             let listener = this.listeners[i];
             let listenerOption = listener.option;
-
+            
             if(listener.running || listener.finished) continue;
 
             // run on no option as well
@@ -187,40 +266,42 @@ class ScrollUtils{
             || (listenerOption.hasStart() && listenerOption.hasEnd() && scrollY >= listenerOption.start() && scrollY <= listenerOption.end())
             || (listenerOption.hasStart() && !listenerOption.hasEnd() && scrollY >= listenerOption.start())
             || (!listenerOption.hasStart() && listenerOption.hasEnd() && scrollY <= listenerOption.start())){
+                listener.outsideCalled = false;
                 listener.running = true;
-                if(!listener.callback){
+                
+                let finishFunction = ()=>{
                     listener.finished = true;
-                    continue;
+                    listener.running = false;
+                }
+                let notFinishFunction = ()=>{
+                    listener.running = false;
                 }
 
                 if(listenerOption.delay > 0){
                     setTimeout(()=>{
-                        let finishFunction = ()=>{
-                            listener.finished = true;
-                        }
                         listener.callback(
                             scrollY, 
                             listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                             listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
-                            finishFunction);
-                        listener.running = false;
+                            finishFunction, notFinishFunction);
                     }, listenerOption.delay);
                     continue;
                 }
-
-                let finishFunction = ()=>{
-                    listener.finished = true;
-                }
+                
                 listener.callback(
                     scrollY, 
                     listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                     listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
-                    finishFunction);
-                listener.running = false;
+                    finishFunction, notFinishFunction);
                 continue;
+            }else if(!listener.outsideCalled){
+                listener.outsideCalled = true;
+                listener.outsideCallback && listener.outsideCallback(
+                    scrollY, 
+                    listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
+                    listenerOption.hasEnd()? listenerOption.end() - scrollY : null);
             }
         }
-        this.listeners.push(...this.listenersBeDeleted);
     }
 
     deleteFinishedListeners(){
@@ -235,6 +316,10 @@ class ScrollUtils{
      * @param {ListenerCallback} listener
      */
     registerListener(listener){
+        if(!listener.callback) return;
+        if(!listener.initCallback && listener.option?.isInitSameAsOutside)
+            listener.initCallback = listener.outsideCallback;
+        listener.initCallback && listener.initCallback(listener.option);
         this.listeners.push(listener);
     }
 }
@@ -252,7 +337,7 @@ class AnimationUtils{
 
     /**
      * @param {HTMLElement} targetElement
-     * @param {Function} finish animation finish event listener
+     * @param {Function} finish function to be called to indicate animation finish
      */
     static animateCharacters(targetElement, finish, interCharDelay = 100){
         GeneralUtils.iterate(targetElement.querySelectorAll(".char-wrapper span"), (element, i)=>{
@@ -374,6 +459,8 @@ export {
     PositionUtils, 
     ScrollUtils, 
     ScrollUtilsOption, 
+    ListenerCallbackBuilder,
+    ListenerCallback,
     AnimationUtils, 
     ScrollTemplates
 };

@@ -7,6 +7,7 @@
 :root{
     --bg-color: rgb(216, 255, 255);
     --bg-color-2: rgb(119, 119, 119);
+    --bg-color-dark: rgb(32, 32, 32);
     --font-color: rgb(32, 32, 32);
     --font-color-2: rgb(195, 231, 255);
     --font-color-white: rgb(222, 231, 236);
@@ -14,6 +15,7 @@
 
     --card-tag-color: rgb(69, 66, 214);
     --card-tag-color-2: rgb(255, 51, 0);
+    --color-bright: rgb(175, 166, 81);
 
     --top-bar-bg-color: rgb(216, 255, 255, 0.5);
     --shadow-color: rgb(70, 70, 70);
@@ -29,7 +31,6 @@ html{
 body{
     background-color: var(--bg-color);
     color: var(--font-color);
-    overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     display: flex;
@@ -44,11 +45,13 @@ a{
 
 .content-wrapper{
     position: absolute;
-    width: 90vw;
+    overflow-x: hidden;
+    /* padding: 0rem 5vw; */
 }
 
 section{
     display: flex;
+    padding: 0 5vw;
     padding-top: 5rem;
     font-size: 1.5rem;
 }
@@ -58,6 +61,7 @@ section > .half-divided{
 }
 section .title{
     font-size: 2.5rem;
+    font-weight: 500;
 }
 section .desc{
     margin-top: 1rem;
@@ -136,7 +140,9 @@ section .desc{
 
     display: flex;
     align-items: center;
-    background-color: var(--top-bar-bg-color);
+    /* background-color: var(--top-bar-bg-color); */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     z-index: 5;
 }
 .top-bar .name-item{
@@ -189,16 +195,20 @@ section .desc{
     width: inherit;
 }
 .intro .photo-card.animating{
-    width: 30rem;
-    height: 45vh;
-    font-size: 1.5rem;
+    /* Param: --rotate --hover-scale */
     box-shadow: 0 0 2rem var(--shadow-color);
     z-index: 1;
     left: 0;
     top: 0;
+    transform: rotateZ(var(--rotate)) scale(var(--hover-scale));
 }
 .intro .photo-card:hover{
-    transform: scale(1.05);
+    /* Param: --rotate --hover-scale */
+    transform: scale(var(--hover-scale));
+}
+.intro .photo-card.animating:hover{
+    /* Param: --rotate --hover-scale2 */
+    transform: scale(var(--hover-scale2));
 }
 @media only screen and (max-width: 800px) {
     .intro{
@@ -219,15 +229,87 @@ section .desc{
 .projects{
     display: flex;
     flex-direction: column;
-    height: 100vh;
     padding-top: 5rem;
     text-align: center;
 }
-.projects .grid-desc{
-    display: grid;
-    grid-template-areas: "a a b" "d e b" "f g b" "c c c";
-    gap: 1rem;
-}
 .projects .top{
     padding-bottom: 6rem;
+}
+.projects .grid-desc{
+    display: grid;
+    grid-template-areas: "a a b" 
+                         "d e b" 
+                         "f g b" 
+                         "c c c";
+    gap: 1rem;
+}
+.projects .grid-desc .card-like{
+    padding: 2rem 0rem;
+}
+.projects .grid-desc .card-like .desc{
+    font-size: 1.3rem;
+}
+@media only screen and (max-width: 800px) {
+    .projects .grid-desc{
+        grid-template-areas: "b b b" 
+                             "a a d" 
+                             "e f g" 
+                             "c c c";
+    }
+}
+
+.section-space{
+    height: 25rem;
+    background-image: linear-gradient(rgba(0,0,0,0), var(--bg-color-dark));
+}
+
+.skills{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: var(--font-color-2);
+    background-color: var(--bg-color-dark);
+    padding-bottom: 16rem;
+}
+.skills .content{
+    display: flex;
+    flex-direction: column;
+}
+.skills .skills-timeline{
+    width: 100%;
+    height: min-content;
+    transform-origin: top left;
+}
+.skills .skills-timeline path{
+    stroke: var(--font-color-2);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 500ms;
+}
+.skills .skills-timeline circle{
+    stroke: var(--bg-color-2);
+    stroke-width: 0.2rem;
+    transition: fill 500ms, transform 500ms, r 500ms;
+}
+.skills .skill-info{
+    position: absolute;
+    opacity: 0;
+    transition: opacity 500ms, transform 500ms;
+}
+@media only screen and (max-width: 800px) {
+    .skills{
+        padding-bottom: 40vh;
+    }
+    .skills .skills-timeline{
+        transform: scale(1.7) translateX(-20vw);
+    }
+}
+
+.future{
+    color: var(--font-color-2);
+    background-color: var(--bg-color-dark);
+}
+.contact{
+    color: var(--font-color-2);
+    background-color: var(--bg-color-dark);
 }

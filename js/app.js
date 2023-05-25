@@ -10,6 +10,15 @@ window.onload = ()=>{
     AnimationUtils.initCharacters(document.querySelector(".top-bar .name-item"));
     AnimationUtils.animateCharacters(document.querySelector(".top-bar .name-item"));
 
+    setupIntro();
+    setupProjects();
+    setupSkills();
+
+    scrollUtils.registerDocumentScroll();
+    // clear out loading screen here
+}
+
+function setupIntro(){
     GeneralUtils.iterate(document.getElementsByClassName('parallax-bg-shape'), (element)=>{
         element.animate(
             { transform: ['translateY(0)', 'translateY(20rem)']},
@@ -25,23 +34,15 @@ window.onload = ()=>{
         );
     });
 
-    setupIntro();
-    setupProjects();
-
-    scrollUtils.registerDocumentScroll();
-    // clear out loading screen here
-}
-
-function setupIntro(){
     GeneralUtils.iterate(document.querySelectorAll(".intro .title"), AnimationUtils.initCharacters);
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .left .title"), 500, "-10rem");
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .right .title"), 500, "-10rem");
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .left .title"), 500, "-20rem");
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .right .title"), 0, "-20rem");
     
-    GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element)=>{
-        let offset = PositionUtils.offsetToCenter(element, 
-            document.querySelector(".intro .collector-view"), {x: 0, y: "-8rem"});
+    GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i, len)=>{
+        let offset = PositionUtils.offsetToCenter(element, document.querySelector(".intro .collector-view"));
         element.style.left = `${offset.x}px`;
         element.style.top = `${offset.y}px`;
+        element.style.setProperty("--rotate", (-30 + i*60/len) + "deg"); // range = 60deg (-30 to 30)
 
         element.addEventListener("click", ()=>{
             if(element.classList.contains("animating")){
@@ -73,24 +74,26 @@ function setupIntro(){
 function setupProjects(){
     GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-80vh");
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .bottom .title"), 0, "-100vh");
 
     GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
         GeneralUtils.registerCssClassToggle(element, element.querySelector(".desc"), "hidden");
-        element.style.transform = "translateX(-100vw)";
         scrollUtils.registerListener({
+            outsideCallback: ()=>{
+                element.style.transform = "translateX(-100vw)";
+            },
             callback: (a,b,c,finish)=>{
                 element.animate(
                     [
-                        { opacity: "0", transform: "translate(-100vw, 20rem)" }, 
-                        { opacity: "1", transform: "translate(0, 0)" }
+                        { opacity: "0", transform: "rotateZ(1deg)" }, 
+                        { opacity: "0.5", transform: "rotateZ(-1deg)" },
+                        { opacity: "1", transform: "rotateZ(0)" },
                     ],
                     {
                         fill: "forwards",
                         duration: 500,
                         delay: i*200,
                     }
-                ).addEventListener("finish", finish);
+                ).addEventListener("finish", finish, {once: true});
             },
             option: new ScrollUtilsOption({
                 startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-80vh"),
@@ -105,5 +108,76 @@ function setupProjects(){
                 duration: 2000,
             }
         );
+    });
+}
+
+function setupSkills(){
+    const skillsTimeline = document.querySelector(".skills .skills-timeline path");
+    const timelinePathLength = skillsTimeline.getTotalLength();
+    const timelineHeight = skillsTimeline.getBoundingClientRect().height;
+
+    scrollUtils.registerListener({
+        callback: (a,relativeYFromStart,relativeYFromEnd,finish, notFinish)=>{
+            let offset = Math.max(0, Math.floor((timelineHeight + relativeYFromStart)/timelineHeight * timelinePathLength));
+            skillsTimeline.style.strokeDashoffset = offset;
+            notFinish();
+        },
+        outsideCallback: (scrollY, relativeYFromStart)=>{
+            skillsTimeline.style.strokeDasharray = timelinePathLength;
+            if(relativeYFromStart > 0)
+                skillsTimeline.style.strokeDashoffset = timelinePathLength;
+            else skillsTimeline.style.strokeDashoffset = 0;
+        },
+        option: new ScrollUtilsOption({
+            startY: PositionUtils.absPos(skillsTimeline).y + resolveCssValue("-60vh"),
+            endY: PositionUtils.absPos(skillsTimeline).y + timelineHeight,
+        }),
+    });
+
+    const skillInfoPanels = document.querySelectorAll(".skills .skill-info");
+    GeneralUtils.iterate(document.querySelectorAll(".skills .skills-timeline circle"), (element, i)=>{
+        scrollUtils.registerListener({
+            callback: (a,relativeYFromStart,c,finish, notFinish)=>{
+                element.style.fill = "var(--color-bright)";
+                element.style.r = 8;
+                notFinish();
+            },
+            outsideCallback: ()=>{
+                element.style.fill = "transparent";
+                element.style.r = 4;
+            },
+            initCallback: ()=>{
+                const absPos = PositionUtils.absPos(element);
+                skillInfoPanels[i].style.left = absPos.x - 100;
+                skillInfoPanels[i].style.top = absPos.y;
+            },
+            option: new ScrollUtilsOption({
+                startY: PositionUtils.absPos(element).y + resolveCssValue("-60vh"),
+                endY: PositionUtils.absPos(skillsTimeline).y + timelineHeight,
+            }),
+        });
+    });
+
+    GeneralUtils.iterate(skillInfoPanels, (element)=>{
+        const elementWidth = element.getBoundingClientRect().width;
+        const overScreen = PositionUtils.absPos(element).x + elementWidth > window.innerWidth;
+        scrollUtils.registerListener({
+            callback: (a,relativeYFromStart,c, finish, notFinish)=>{
+                element.style.opacity = 1;
+                if(overScreen)
+                    element.style.transform = `translateX(-${elementWidth}px)`;
+                else element.style.transform = `translateX(${elementWidth}px)`;
+                notFinish();
+            },
+            outsideCallback: ()=>{
+                element.style.opacity = 0;
+                element.style.transform = "translateX(5rem)";
+            },
+            option: new ScrollUtilsOption({
+                startY: PositionUtils.absPos(element).y + resolveCssValue("-60vh"),
+                endY: PositionUtils.absPos(skillsTimeline).y + timelineHeight,
+                isInitSameAsOutside: true,
+            }),
+        });
     });
 }

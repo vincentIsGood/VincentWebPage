@@ -46,7 +46,7 @@
 }
 .card-like .link{
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
     font-size: 1rem;
     padding: 0.2rem 0.6rem;
