@@ -16,12 +16,30 @@ class GeneralUtils{
      * @param {HTMLElement} targetElement if null, clickElement is used
      * @param {string} className
      */
-    static registerCssClassToggle(clickElement, targetElement, className){
+    static registerCssClassToggleClick(clickElement, targetElement, className){
         if(!clickElement) return;
         if(!targetElement) targetElement = clickElement;
         
         clickElement.addEventListener("click", ()=>{
             targetElement.classList.toggle(className);
+        });
+    }
+
+    /**
+     * When you hover into an element, a class from the element is DELETED. Otherwise, ADDED
+     * @param {HTMLElement} hoverInOutElement
+     * @param {HTMLElement} targetElement if null, clickElement is used
+     * @param {string} className
+     */
+    static registerCssClassToggleHover(hoverInOutElement, targetElement, className){
+        if(!hoverInOutElement) return;
+        if(!targetElement) targetElement = hoverInOutElement;
+        
+        hoverInOutElement.addEventListener("mouseenter", ()=>{
+            targetElement.classList.remove(className);
+        });
+        hoverInOutElement.addEventListener("mouseleave", ()=>{
+            targetElement.classList.add(className);
         });
     }
 }
@@ -107,6 +125,10 @@ class ScrollUtilsOption{
     isInitSameAsOutside;
 
     constructor({startY = null, endY = null, delay = 0, isInitSameAsOutside = false}){
+        if(startY != null && typeof(startY) != "number" && typeof(startY) != "string") 
+            console.warn("startY is neither a number NOR string");
+        if(endY != null && typeof(endY) != "number" && typeof(endY) != "string") 
+            console.warn("endY is neither a number NOR string");
         this.startStr = startY;
         this.endStr = endY;
         this.delay = delay;

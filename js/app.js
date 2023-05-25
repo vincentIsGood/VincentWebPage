@@ -1,6 +1,8 @@
 import {GeneralUtils, PositionUtils, ScrollUtils, ScrollUtilsOption, AnimationUtils, ScrollTemplates, resolveCssValue} from "./utils.js";
 import './scroll-timeline.js';
 
+const MOBILE_MODE = window.innerWidth < 800;
+
 let scrollUtils = new ScrollUtils();
 
 window.onload = ()=>{
@@ -37,7 +39,7 @@ function setupIntro(){
     GeneralUtils.iterate(document.querySelectorAll(".intro .title"), AnimationUtils.initCharacters);
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .left .title"), 500, "-20rem");
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .right .title"), 0, "-20rem");
-    
+
     GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i, len)=>{
         let offset = PositionUtils.offsetToCenter(element, document.querySelector(".intro .collector-view"));
         element.style.left = `${offset.x}px`;
@@ -57,7 +59,21 @@ function setupIntro(){
     });
 
     GeneralUtils.iterate(document.querySelectorAll(".intro .collapsable"), (element)=>{
-        GeneralUtils.registerCssClassToggle(element, element.querySelector(".desc"), "hidden");
+        GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "hidden");
+        scrollUtils.registerListener({
+            callback: (a,b,c,finish,notFinish)=>{
+                element.querySelector(".desc").classList.remove("hidden");
+                notFinish();
+            },
+            outsideCallback: ()=>{
+                element.querySelector(".desc").classList.add("hidden");
+            },
+            option: new ScrollUtilsOption({
+                startY: PositionUtils.absPos(element).y - resolveCssValue("20rem"),
+                endY: PositionUtils.absPos(element).y - resolveCssValue("10rem"),
+            }),
+        });
+
         element.animate(
             [
                 { opacity: "0", transform: "translateX(-10rem)" }, 
@@ -76,7 +92,9 @@ function setupProjects(){
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-80vh");
 
     GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
-        GeneralUtils.registerCssClassToggle(element, element.querySelector(".desc"), "hidden");
+        if(MOBILE_MODE){
+            GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "fade-smaller");
+        }else GeneralUtils.registerCssClassToggleHover(element, element.querySelector(".desc"), "fade-smaller");
         scrollUtils.registerListener({
             outsideCallback: ()=>{
                 element.style.transform = "translateX(-100vw)";
@@ -160,13 +178,15 @@ function setupSkills(){
 
     GeneralUtils.iterate(skillInfoPanels, (element)=>{
         const elementWidth = element.getBoundingClientRect().width;
-        const overScreen = PositionUtils.absPos(element).x + elementWidth > window.innerWidth;
+        const overScreen = PositionUtils.absPos(element).x - elementWidth <= 0;
         scrollUtils.registerListener({
             callback: (a,relativeYFromStart,c, finish, notFinish)=>{
+                console.log(overScreen);
                 element.style.opacity = 1;
+                element.style.transform = `translateX(${elementWidth}px)`;
                 if(overScreen)
-                    element.style.transform = `translateX(-${elementWidth}px)`;
-                else element.style.transform = `translateX(${elementWidth}px)`;
+                    element.style.transform = `translateX(${elementWidth + resolveCssValue("20vw")}px)`;
+                else element.style.transform = `translateX(-${elementWidth - resolveCssValue("5vw")}px)`;
                 notFinish();
             },
             outsideCallback: ()=>{

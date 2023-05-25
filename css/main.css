@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+/*
+-webkit-background-clip: text;
+background-image: linear-gradient()
+*/
+
 :root{
     --bg-color: rgb(216, 255, 255);
     --bg-color-2: rgb(119, 119, 119);
@@ -177,6 +182,9 @@ section .desc{
     height: min-content;
     padding-top: 10rem;
 }
+.intro .collapsable:first-of-type{
+    margin-top: 5rem;
+}
 .intro .right{
     padding-left: 1rem;
 }
@@ -248,6 +256,12 @@ section .desc{
 }
 .projects .grid-desc .card-like .desc{
     font-size: 1.3rem;
+    opacity: 1;
+    transition: font-size 500ms, opacity 500ms;
+}
+.projects .grid-desc .card-like .desc.fade-smaller{
+    font-size: 1rem;
+    opacity: 0.5;
 }
 @media only screen and (max-width: 800px) {
     .projects .grid-desc{
@@ -258,11 +272,13 @@ section .desc{
     }
 }
 
+/* SPACE */
 .section-space{
     height: 25rem;
     background-image: linear-gradient(rgba(0,0,0,0), var(--bg-color-dark));
 }
 
+/* SKILLS */
 .skills{
     display: flex;
     flex-direction: column;
@@ -305,10 +321,13 @@ section .desc{
     }
 }
 
+/* FUTURE */
 .future{
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
 }
+
+/* CONTACT */
 .contact{
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
