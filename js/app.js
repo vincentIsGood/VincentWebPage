@@ -1,7 +1,7 @@
 import {GeneralUtils, PositionUtils, ScrollUtils, ScrollUtilsOption, AnimationUtils, ScrollTemplates, resolveCssValue} from "./utils.js";
 import './scroll-timeline.js';
 
-const MOBILE_MODE = window.innerWidth < 800;
+const MOBILE_MODE = window.innerWidth < 1000;
 
 let scrollUtils = new ScrollUtils();
 
