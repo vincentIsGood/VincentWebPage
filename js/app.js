@@ -119,7 +119,7 @@ function setupProjects(){
         });
 
         element.querySelector(".link")?.animate(
-            {transform: ["translateX(-0.5rem)", "translateX(0)", "translateX(-0.5rem)"]},
+            {opacity: ["0.3", "1", "0.3"]},
             {
                 iterations: Infinity,
                 delay: 1000,
@@ -153,6 +153,9 @@ function setupSkills(){
     });
 
     const skillInfoPanels = document.querySelectorAll(".skills .skill-info");
+    if(skillInfoPanels.length != document.querySelectorAll(".skills .skills-timeline circle").length){
+        throw new Error("Illegal State: len(circle) != len(.skill-info)");
+    }
     GeneralUtils.iterate(document.querySelectorAll(".skills .skills-timeline circle"), (element, i)=>{
         scrollUtils.registerListener({
             callback: (a,relativeYFromStart,c,finish, notFinish)=>{

@@ -11,6 +11,10 @@
     width: 0.7rem;
 }
 
+.small-font{
+    font-size: 1rem;
+}
+
 .collapsable{
     overflow: hidden;
 }
