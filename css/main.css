@@ -30,6 +30,20 @@ background-image: linear-gradient()
     font-size: var(--font-size);
 }
 
+::-webkit-scrollbar {
+    height: 0.5rem;
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-color-2);
+    border-radius: 0.5rem;
+}
+
 html{
     scroll-behavior: smooth;
     scroll-snap-type: start;
@@ -278,10 +292,6 @@ section .desc{
         display: flex;
         flex-direction: column;
         font-size: 2rem;
-        /* grid-template-areas: "b b b" 
-                             "a a d" 
-                             "e f g" 
-                             "c c c"; */
     }
     .projects .grid-desc .card-like .desc{
         font-size: 1.6rem;
@@ -307,7 +317,6 @@ section .desc{
     text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
-    padding-bottom: 16rem;
 }
 .skills .content{
     display: flex;
@@ -368,6 +377,7 @@ section .desc{
 .future{
     display: flex;
     flex-direction: column;
+    text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
 }
@@ -376,6 +386,20 @@ section .desc{
 .contact{
     display: flex;
     flex-direction: column;
+    text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    color: var(--font-color-2);
+    background-color: var(--bg-color-dark);
+}
+footer .left{
+
+}
+footer .right{
+
 }
