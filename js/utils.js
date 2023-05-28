@@ -155,6 +155,14 @@ class ScrollUtilsOption{
     end(){
         return this.endStr = resolveCssValue(this.endStr);
     }
+
+    /**
+     * @returns {number} -1 if end is not defined
+     */
+    length(){
+        if(!this.hasEnd()) return -1;
+        return this.end() - this.start();
+    }
 }
 
 /**
@@ -174,7 +182,8 @@ class ListenerCallback{
      * @param {Function} finish `finish()` sets `finished` to `true`
      * @param {Function} notFinish `notFinish()` will keep this listener's `running` to `false`, 
      *                             so that this listener can run again next time you scroll
-     * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function, notFinish: Function)=>{}}
+     * @param {number} progress -1 if `endY` is not defined. It indicates how far it is from `scrollY` to `endY` in percentage
+     * @type {(scrollY: number, relativeYFromStart: number, relativeYFromEnd: number, finish: Function, notFinish: Function, progress: number)=>{}}
      */
     callback;
     /**
@@ -305,7 +314,9 @@ class ScrollUtils{
                             scrollY, 
                             listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                             listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
-                            finishFunction, notFinishFunction);
+                            finishFunction, notFinishFunction,
+                            listenerOption.hasEnd()? ((scrollY - listenerOption.start()) / listenerOption.length()) : -1
+                        );
                     }, listenerOption.delay);
                     continue;
                 }
@@ -314,7 +325,9 @@ class ScrollUtils{
                     scrollY, 
                     listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                     listenerOption.hasEnd()? listenerOption.end() - scrollY : null,
-                    finishFunction, notFinishFunction);
+                    finishFunction, notFinishFunction,
+                    listenerOption.hasEnd()? ((listenerOption.end() - scrollY) / listenerOption.length()) : -1
+                );
                 continue;
             }else if(!listener.outsideCalled){
                 listener.outsideCalled = true;

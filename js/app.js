@@ -12,9 +12,23 @@ window.onload = ()=>{
     AnimationUtils.initCharacters(document.querySelector(".top-bar .name-item"));
     AnimationUtils.animateCharacters(document.querySelector(".top-bar .name-item"));
 
+    scrollUtils.registerListener({
+        callback: (a,b,c,finish,notFinish)=>{
+            document.querySelector(".top-bar").classList.add("change-color");
+            notFinish();
+        },
+        outsideCallback(){
+            document.querySelector(".top-bar").classList.remove("change-color");
+        },
+        option: new ScrollUtilsOption({
+            startY: PositionUtils.absPos(document.querySelector(".skills")).y,
+        }),
+    });
+
     setupIntro();
-    setupProjects();
     setupSkills();
+    setupProjects();
+    setupTransition();
 
     scrollUtils.registerDocumentScroll();
     // clear out loading screen here
@@ -87,48 +101,6 @@ function setupIntro(){
     });
 }
 
-function setupProjects(){
-    GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-70vh");
-
-    GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
-        if(MOBILE_MODE){
-            GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "fade-smaller");
-        }else GeneralUtils.registerCssClassToggleHover(element, element.querySelector(".desc"), "fade-smaller");
-        scrollUtils.registerListener({
-            outsideCallback: ()=>{
-                element.style.transform = "translateX(-100vw)";
-            },
-            callback: (a,b,c,finish)=>{
-                element.animate(
-                    [
-                        { opacity: "0", transform: "rotateZ(1deg)" }, 
-                        { opacity: "0.5", transform: "rotateZ(-1deg)" },
-                        { opacity: "1", transform: "rotateZ(0)" },
-                    ],
-                    {
-                        fill: "forwards",
-                        duration: 500,
-                        delay: i*200,
-                    }
-                ).addEventListener("finish", finish, {once: true});
-            },
-            option: new ScrollUtilsOption({
-                startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-70vh"),
-            }),
-        });
-
-        element.querySelector(".link")?.animate(
-            {opacity: ["0.3", "1", "0.3"]},
-            {
-                iterations: Infinity,
-                delay: 1000,
-                duration: 2000,
-            }
-        );
-    });
-}
-
 function setupSkills(){
     const skillsTimeline = document.querySelector(".skills .skills-timeline path");
     const timelinePathLength = skillsTimeline.getTotalLength();
@@ -184,7 +156,6 @@ function setupSkills(){
         const overScreen = PositionUtils.absPos(element).x - elementWidth <= 0;
         scrollUtils.registerListener({
             callback: (a,relativeYFromStart,c, finish, notFinish)=>{
-                console.log(overScreen);
                 element.style.opacity = 1;
                 element.style.transform = `translateX(${elementWidth}px)`;
                 if(overScreen)
@@ -202,5 +173,64 @@ function setupSkills(){
                 isInitSameAsOutside: true,
             }),
         });
+    });
+}
+
+function setupProjects(){
+    GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-70vh");
+
+    GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
+        if(MOBILE_MODE){
+            GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "fade-smaller");
+        }else GeneralUtils.registerCssClassToggleHover(element, element.querySelector(".desc"), "fade-smaller");
+        scrollUtils.registerListener({
+            outsideCallback: ()=>{
+                element.style.transform = "translateX(-100vw)";
+            },
+            callback: (a,b,c,finish)=>{
+                element.animate(
+                    [
+                        { opacity: "0", transform: "rotateZ(1deg)" }, 
+                        { opacity: "0.5", transform: "rotateZ(-1deg)" },
+                        { opacity: "1", transform: "rotateZ(0)" },
+                    ],
+                    {
+                        fill: "forwards",
+                        duration: 500,
+                        delay: i*200,
+                    }
+                ).addEventListener("finish", finish, {once: true});
+            },
+            option: new ScrollUtilsOption({
+                startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-70vh"),
+            }),
+        });
+
+        element.querySelector(".link")?.animate(
+            {opacity: ["0.3", "1", "0.3"]},
+            {
+                iterations: Infinity,
+                delay: 1000,
+                duration: 2000,
+            }
+        );
+    });
+}
+
+function setupTransition(){
+    const transitionText = document.querySelector(".transition-text");
+    scrollUtils.registerListener({
+        callback(a,b,c,finish,notFinish,progress){
+            transitionText.querySelector("span").classList.remove("hidden");
+            notFinish();
+        },
+        outsideCallback(){
+            transitionText.querySelector("span").classList.add("hidden");
+        },
+        option: new ScrollUtilsOption({
+            startY: PositionUtils.absPos(transitionText).y - resolveCssValue("20vh"),
+            endY: PositionUtils.absPos(transitionText).y + resolveCssValue("20vh"),
+        }),
     });
 }

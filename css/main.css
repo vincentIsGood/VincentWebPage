@@ -15,6 +15,7 @@ background-image: linear-gradient()
     --bg-color-dark: rgb(32, 32, 32);
     --font-color: rgb(32, 32, 32);
     --font-color-2: rgb(195, 231, 255);
+    --font-color-2-half-fade: rgba(195, 231, 255, 0.5);
     --font-color-white: rgb(222, 231, 236);
     --font-size: clamp(0.6rem, 1vw, 15px);
     --bg-clip-font-color: linear-gradient(97deg, rgb(255, 255, 255, 0.8), rgb(127, 182, 213));
@@ -165,6 +166,11 @@ section .desc{
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 5;
+    transition: color 500ms;
+    color: var(--font-color);
+}
+.top-bar.change-color{
+    color: var(--font-color-2);
 }
 .top-bar .name-item{
     position: relative;
@@ -173,7 +179,7 @@ section .desc{
 .top-bar .item{
     position: relative;
     padding-left: 1.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .top-bar .item::before{
     content: "";
@@ -195,7 +201,7 @@ section .desc{
 /* Content Sections */
 /* INTRO */
 .intro{
-    height: min-content;
+    height: 100vh;
     padding-top: 10rem;
 }
 .intro .collapsable{
@@ -252,60 +258,8 @@ section .desc{
     }
 }
 
-/* PROJECTS */
-.projects{
-    display: flex;
-    flex-direction: column;
-    padding-top: 20rem;
-    text-align: center;
-}
-.projects .top{
-    padding-bottom: 6rem;
-}
-.projects .grid-desc{
-    display: grid;
-    grid-template-areas: "a a b" 
-                         "d e b" 
-                         "f g b" 
-                         "c c c";
-    gap: 1rem;
-}
-.projects .grid-desc .card-like{
-    padding: 2rem 0rem;
-}
-.projects .grid-desc .card-like .desc{
-    font-size: 1.3rem;
-    opacity: 1;
-    transition: font-size 500ms, opacity 500ms;
-}
-.projects .grid-desc .card-like .desc a svg{
-    min-width: 2rem;
-    min-height: 2rem;
-    transition: opacity 500ms;
-}
-.projects .grid-desc .card-like .desc.fade-smaller{
-    font-size: 1rem;
-    opacity: 0.8;
-}
-@media only screen and (max-width: 1000px) {
-    .projects .grid-desc{
-        display: flex;
-        flex-direction: column;
-        font-size: 2rem;
-    }
-    .projects .grid-desc .card-like .desc{
-        font-size: 1.6rem;
-        opacity: 1;
-        transition: font-size 500ms, opacity 500ms;
-    }
-    .projects .grid-desc .card-like .desc.fade-smaller{
-        font-size: 1.4rem;
-        opacity: 0.8;
-    }
-}
-
-/* SPACE */
-.section-space{
+/* TRANSITION SPACE */
+.transition-space{
     height: 25rem;
     background-image: linear-gradient(rgba(0,0,0,0), var(--bg-color-dark));
 }
@@ -373,6 +327,79 @@ section .desc{
     }
 }
 
+/* PROJECTS */
+.projects{
+    display: flex;
+    flex-direction: column;
+    padding-top: 6rem;
+    text-align: center;
+    color: var(--font-color-2);
+    background-color: var(--bg-color-dark);
+}
+.projects .top{
+    padding-bottom: 6rem;
+}
+.projects .grid-desc{
+    display: grid;
+    grid-template-areas: "a a b" 
+                         "d e b" 
+                         "f g b" 
+                         "c c c";
+    gap: 1rem;
+}
+.projects .grid-desc .card-like{
+    padding: 2rem 0rem;
+    border: 1px solid var(--font-color-2);
+}
+.projects .grid-desc .card-like .desc{
+    font-size: 1.3rem;
+    opacity: 1;
+    transition: font-size 500ms, opacity 500ms;
+}
+.projects .grid-desc .card-like .desc a svg{
+    min-width: 2rem;
+    min-height: 2rem;
+    transition: opacity 500ms;
+    fill: var(--font-color-2);
+}
+.projects .grid-desc .card-like .desc.fade-smaller{
+    font-size: 1rem;
+    opacity: 0.8;
+}
+@media only screen and (max-width: 1000px) {
+    .projects .grid-desc{
+        display: flex;
+        flex-direction: column;
+        font-size: 2rem;
+    }
+    .projects .grid-desc .card-like .desc{
+        font-size: 1.6rem;
+        opacity: 1;
+        transition: font-size 500ms, opacity 500ms;
+    }
+    .projects .grid-desc .card-like .desc.fade-smaller{
+        font-size: 1.4rem;
+        opacity: 0.8;
+    }
+}
+
+/* TRANSITION TEXT */
+.transition-text{
+    text-align: center;
+    height: 25rem;
+    background-color: var(--bg-color-dark);
+    padding: 30rem 0;
+}
+.transition-text span{
+    width: 100%;
+    transition: opacity 500ms;
+    color: var(--font-color-2);
+    opacity: 1;
+}
+.transition-text span.hidden{
+    opacity: 0;
+}
+
 /* FUTURE */
 .future{
     display: flex;
@@ -380,6 +407,32 @@ section .desc{
     text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
+}
+.future .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 5rem;
+}
+.future .content .items-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.future .content .items-row > .item{
+    /* enable grow & shrink */
+    flex: 1 1;
+    padding-bottom: 2rem;
+}
+.future .content .items-row > .item + .item{
+    border-left: 1px solid var(--font-color-2-half-fade);
+}
+.future .content .items-row .item .title{
+    font-size: 2rem;
+}
+.future .content .items-row .item .desc{
+    font-size: inherit;
 }
 
 /* CONTACT */
@@ -391,15 +444,10 @@ section .desc{
     background-color: var(--bg-color-dark);
 }
 
+/* FOOTER */
 footer{
     display: flex;
     justify-content: space-between;
-    color: var(--font-color-2);
+    color: var(--font-color-2-half-fade);
     background-color: var(--bg-color-dark);
-}
-footer .left{
-
-}
-footer .right{
-
 }
