@@ -172,14 +172,73 @@ section .desc{
 .top-bar.change-color{
     color: var(--font-color-2);
 }
+.top-bar .collapsable-menu{
+    position: absolute;
+    right: 3vw;
+    top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid var(--font-color);
+    border-radius: 0.3rem;
+    transition: transform 500ms, opacity 500ms, background-color 500ms;
+    opacity: 1;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--shadow-color);
+}
+.top-bar.change-color .collapsable-menu{
+    border: 1px solid var(--font-color-2);
+    background-color: var(--font-color);
+}
+.top-bar .collapsable-menu.hidden{
+    opacity: 0;
+    transform: translateX(15vw);
+}
+.top-bar .collapsable-menu .item{
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    padding-left: 0;
+    width: 100%;
+}
+.top-bar .collapsable-menu .item svg{
+    margin-left: 0;
+    transition: transform 500ms, opacity 500ms, background-color 500ms;
+}
+.top-bar .collapsable-menu .item:hover{
+    background-color: var(--bg-color-2);
+}
+.top-bar .collapsable-menu .item:hover svg{
+    transform: translateX(0.5rem);
+}
+.top-bar .collapsable-menu .menu-button:hover svg{
+    transform: none;
+}
+.top-bar .collapsable-menu .item:hover::before{
+    transform: none;
+}
+.top-bar .item::before{
+    display: none;
+}
 .top-bar .name-item{
     position: relative;
     margin-right: auto;
 }
 .top-bar .item{
+    display: flex;
+    align-items: center;
     position: relative;
     padding-left: 1.5rem;
     font-size: 1.5rem;
+    cursor: pointer;
+}
+.top-bar .item svg{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+    transition: fill 500ms;
+}
+.top-bar.change-color .item svg{
+    fill: var(--font-color-2);
 }
 .top-bar .item::before{
     content: "";
@@ -190,9 +249,8 @@ section .desc{
     background-color: black;
     padding-left: 1.2rem;
     transition: transform 200ms;
-    transform: scaleX(0);
+    transform: translateX(-0.5rem) scaleX(0);
     transform-origin: left;
-    
 }
 .top-bar .item:hover::before{
     transform: scaleX(1);
@@ -448,6 +506,9 @@ section .desc{
     width: min-content;
     display: flex;
     align-items: center;
+    color: var(--font-color-2-half-fade);
+    text-decoration: underline;
+    word-break: keep-all;
 }
 .contact .item svg{
     width: 3rem;

@@ -11,6 +11,9 @@ window.onload = ()=>{
 
     AnimationUtils.initCharacters(document.querySelector(".top-bar .name-item"));
     AnimationUtils.animateCharacters(document.querySelector(".top-bar .name-item"));
+    GeneralUtils.iterate(document.querySelectorAll(".menu-button"), (ele)=>{
+        GeneralUtils.registerCssClassToggleClick(ele, document.querySelector(".collapsable-menu"), "hidden");
+    });
 
     scrollUtils.registerListener({
         callback: (a,b,c,finish,notFinish)=>{
