@@ -318,6 +318,7 @@ section .desc{
 
 /* TRANSITION SPACE */
 .transition-space{
+    margin-top: 20vh;
     height: 25rem;
     background-image: linear-gradient(rgba(0,0,0,0), var(--bg-color-dark));
 }
