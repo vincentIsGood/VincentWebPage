@@ -191,6 +191,7 @@ section .desc{
     background-color: var(--font-color);
 }
 .top-bar .collapsable-menu.hidden{
+    display: none;
     opacity: 0;
     transform: translateX(15vw);
 }
