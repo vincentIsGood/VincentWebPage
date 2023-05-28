@@ -16,11 +16,12 @@ class GeneralUtils{
      * @param {HTMLElement} targetElement if null, clickElement is used
      * @param {string} className
      */
-    static registerCssClassToggleClick(clickElement, targetElement, className){
+    static registerCssClassToggleClick(clickElement, targetElement, className, propagate = true){
         if(!clickElement) return;
         if(!targetElement) targetElement = clickElement;
         
-        clickElement.addEventListener("click", ()=>{
+        clickElement.addEventListener("click", (e)=>{
+            if(!propagate) e.stopPropagation();
             targetElement.classList.toggle(className);
         });
     }
