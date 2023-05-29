@@ -488,6 +488,8 @@ section .desc{
     /* enable grow & shrink */
     flex: 1 1;
     padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 .future .content .items-row > .item + .item{
     border-left: 1px solid var(--font-color-2-half-fade);
@@ -506,6 +508,7 @@ section .desc{
     text-align: left;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
+    padding-top: 15rem;
     padding-bottom: 5rem;
 }
 .contact .item{
