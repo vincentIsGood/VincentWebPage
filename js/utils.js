@@ -481,10 +481,10 @@ function resolveCssValue(strCss){
         return parseFloat(strCss) * parseFloat(getComputedStyle(document.documentElement).fontSize);
     }
     if(strCss.endsWith("vw")){
-        return parseFloat(strCss)/100 * window.innerWidth;
+        return parseFloat(strCss)/100 * window.outerWidth;
     }
     if(strCss.endsWith("vh")){
-        return parseFloat(strCss)/100 * window.innerHeight;
+        return parseFloat(strCss)/100 * window.outerHeight;
     }
     return parseFloat(strCss);
 }

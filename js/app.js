@@ -1,7 +1,7 @@
 import {GeneralUtils, PositionUtils, ScrollUtils, ScrollUtilsOption, AnimationUtils, ScrollTemplates, resolveCssValue} from "./utils.js";
 import './scroll-timeline.js';
 
-const MOBILE_MODE = window.innerWidth < 1000;
+const MOBILE_MODE = window.outerWidth < 1000;
 
 let scrollUtils = new ScrollUtils();
 
@@ -115,7 +115,7 @@ function setupSkills(){
             },
             initCallback: ()=>{
                 const absPos = PositionUtils.absPos(element);
-                skillInfoPanels[i].style.left = absPos.x - 100;
+                skillInfoPanels[i].style.left = absPos.x;
                 skillInfoPanels[i].style.top = absPos.y;
             },
             option: new ScrollUtilsOption({
@@ -127,21 +127,17 @@ function setupSkills(){
 
     GeneralUtils.iterate(skillInfoPanels, (element)=>{
         const elementWidth = element.getBoundingClientRect().width;
-        const overScreenLeft = PositionUtils.absPos(element).x <= 0;
-        const overScreenRight = PositionUtils.absPos(element).x + elementWidth >= window.innerWidth;
+        const overScreenRight = (PositionUtils.absPos(element).x + elementWidth * 2) >= window.outerWidth;
         scrollUtils.registerListener({
             callback: (a,relativeYFromStart,c, finish, notFinish)=>{
                 element.style.opacity = 1;
                 element.style.transform = `translateX(${elementWidth}px)`;
-                if(overScreenLeft)
-                    element.style.transform = `translateX(${elementWidth + resolveCssValue("20vw")}px)`;
-                else if(overScreenRight)
-                    element.style.transform = `translateX(-${elementWidth - resolveCssValue("20vw")}px)`;
+                if(overScreenRight)
+                    element.style.transform = `translateX(-${elementWidth}px)`;
                 notFinish();
             },
             outsideCallback: ()=>{
                 element.style.opacity = 0;
-                element.style.transform = "translateX(5rem)";
             },
             option: new ScrollUtilsOption({
                 startY: PositionUtils.absPos(element).y + resolveCssValue("-60vh"),
