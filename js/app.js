@@ -38,24 +38,23 @@ window.onload = ()=>{
 }
 
 function setupIntro(){
-    GeneralUtils.iterate(document.getElementsByClassName('parallax-bg-shape'), (element)=>{
-        element.animate(
-            { transform: ['translateY(0)', 'translateY(20rem)']},
-            {
-                fill: 'both',
-                timeline: new ScrollTimeline({
-                    scrollOffsets: [
-                        new CSSUnitValue(0, 'rem'),
-                        new CSSUnitValue(20, 'rem')
-                    ]
-                }),
-            }
-        );
-    });
+    // GeneralUtils.iterate(document.getElementsByClassName('parallax-bg-shape'), (element)=>{
+    //     element.animate(
+    //         { transform: ['translateY(0)', 'translateY(20rem)']},
+    //         {
+    //             fill: 'both',
+    //             timeline: new ScrollTimeline({
+    //                 scrollOffsets: [
+    //                     new CSSUnitValue(0, 'rem'),
+    //                     new CSSUnitValue(20, 'rem')
+    //                 ]
+    //             }),
+    //         }
+    //     );
+    // });
 
-    GeneralUtils.iterate(document.querySelectorAll(".intro .title"), AnimationUtils.initCharacters);
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .left .title"), 500, "-20rem");
-    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .right .title"), 0, "-20rem");
+    GeneralUtils.iterate(document.querySelectorAll(".intro .top .title"), AnimationUtils.initCharacters);
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .top .title"), 500, "-100vh");
 
     GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i, len)=>{
         let offset = PositionUtils.offsetToCenter(element, document.querySelector(".intro .collector-view"));
@@ -73,34 +72,6 @@ function setupIntro(){
             }
             element.classList.toggle("animating");
         });
-    });
-
-    GeneralUtils.iterate(document.querySelectorAll(".intro .collapsable"), (element)=>{
-        GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "hidden");
-        scrollUtils.registerListener({
-            callback: (a,b,c,finish,notFinish)=>{
-                element.querySelector(".desc").classList.remove("hidden");
-                notFinish();
-            },
-            outsideCallback: ()=>{
-                element.querySelector(".desc").classList.add("hidden");
-            },
-            option: new ScrollUtilsOption({
-                startY: PositionUtils.absPos(element).y - resolveCssValue("20rem"),
-                endY: PositionUtils.absPos(element).y - resolveCssValue("10rem"),
-            }),
-        });
-
-        element.animate(
-            [
-                { opacity: "0", transform: "translateX(-10rem)" }, 
-                { opacity: "1", transform: "translateX(0)" }
-            ], // same as { opacity: ["0", "1"] }
-            {
-                fill: "forwards",
-                duration: 500,
-            }
-        );
     });
 }
 
@@ -156,14 +127,16 @@ function setupSkills(){
 
     GeneralUtils.iterate(skillInfoPanels, (element)=>{
         const elementWidth = element.getBoundingClientRect().width;
-        const overScreen = PositionUtils.absPos(element).x - elementWidth <= 0;
+        const overScreenLeft = PositionUtils.absPos(element).x <= 0;
+        const overScreenRight = PositionUtils.absPos(element).x + elementWidth >= window.innerWidth;
         scrollUtils.registerListener({
             callback: (a,relativeYFromStart,c, finish, notFinish)=>{
                 element.style.opacity = 1;
                 element.style.transform = `translateX(${elementWidth}px)`;
-                if(overScreen)
+                if(overScreenLeft)
                     element.style.transform = `translateX(${elementWidth + resolveCssValue("20vw")}px)`;
-                else element.style.transform = `translateX(-${elementWidth - resolveCssValue("5vw")}px)`;
+                else if(overScreenRight)
+                    element.style.transform = `translateX(-${elementWidth - resolveCssValue("20vw")}px)`;
                 notFinish();
             },
             outsideCallback: ()=>{

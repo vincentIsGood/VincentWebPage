@@ -50,55 +50,70 @@
             </div>
         </div>
         <div class="content-wrapper">
-            <div class="parallax-bg-shape bg-shape"></div>
+            <!-- <div class="parallax-bg-shape bg-shape"></div> -->
             <!-- <div class="parallax-bg-shape bg-shape-2"></div> -->
             <section id="intro" class="intro">
-                <div class="half-divided left">
+                <div class="top">
                     <div class="title">Software Developer</div>
                     <div class="desc">
                         I create useful software and libraries. But who am I, really?
-                        <div class="collapsable card-like">
-                            <div class="sub-title">Quote</div>
-                            <div class="desc hidden">
-                                "Programs made with a purpose."
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>format-quote-close</title><path d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z" /></svg>
+                        Programs made with a purpose.
+                    </div>
+                    <div class="content">
+                        <div class="trait-item">
+                            <div class="sub-title">
+                                <svg style="--svgbg-color: var(--svg-light-1); --svg-color: var(--svg-dark-1);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>lightbulb</title><path d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z" /></svg>
+                                Experienced problem-solver
+                            </div>
+                            <div class="desc">
+                                I can solve problems with calm and efficiency,
+                                after working on many projects over the years.
                             </div>
                         </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">An experienced problem-solver</div>
-                            <div class="desc hidden">
-                                After working on many projects over the years, 
-                                I learned to deal with problems with calm and efficiency.
+                        <div class="trait-item">
+                            <div class="sub-title">
+                                <svg style="--svgbg-color: var(--svg-light-2); --svg-color: var(--svg-dark-2);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>chart-line</title><path d="M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z" /></svg>
+                                Insane trouble-shooter
                             </div>
-                        </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">An insane trouble-shooter</div>
-                            <div class="desc hidden">
-                                Performance is important, I find ways to reduce each byte 
+                            <div class="desc">
+                                Performance is important. I find ways to reduce each byte 
                                 I put onto memory and each instruction I send to CPU scheduler.
                             </div>
                         </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">A quick learner</div>
-                            <div class="desc hidden">
-                                Machine learning is new, but I am no fear of new technologies.
-                                I recently just learned to use LoRA to fine-tune a japanese GPT-2 model.
+                        <div class="trait-item">
+                            <div class="sub-title">
+                                <svg style="--svgbg-color: var(--svg-light-3); --svg-color: var(--svg-dark-3);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>book-open-page-variant</title><path d="M19 2L14 6.5V17.5L19 13V2M6.5 5C4.55 5 2.45 5.4 1 6.5V21.16C1 21.41 1.25 21.66 1.5 21.66C1.6 21.66 1.65 21.59 1.75 21.59C3.1 20.94 5.05 20.5 6.5 20.5C8.45 20.5 10.55 20.9 12 22C13.35 21.15 15.8 20.5 17.5 20.5C19.15 20.5 20.85 20.81 22.25 21.56C22.35 21.61 22.4 21.59 22.5 21.59C22.75 21.59 23 21.34 23 21.09V6.5C22.4 6.05 21.75 5.75 21 5.5V19C19.9 18.65 18.7 18.5 17.5 18.5C15.8 18.5 13.35 19.15 12 20V6.5C10.55 5.4 8.45 5 6.5 5Z" /></svg>
+                                Quick learner
+                            </div>
+                            <div class="desc">
+                                I can learn and use new technologies quickly. Use them more, 
+                                you can remember them all.
                             </div>
                         </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">A quick worker</div>
-                            <div class="desc hidden">
+                        <div class="trait-item">
+                            <div class="sub-title">
+                                <svg style="--svgbg-color: var(--svg-light-4); --svg-color: var(--svg-dark-4);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>fast-forward</title><path d="M13,6V18L21.5,12M4,18L12.5,12L4,6V18Z" /></svg>
+                                Quick worker
+                            </div>
+                            <div class="desc">
                                 I can finish jobs on-time or before the deadline, much like how I 
                                 finish my school homework once it is out.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="half-divided right">
+                <div class="bottom">
+                    <!-- TODO: It's good, but needs clicking, animate it some how -->
                     <span class="title">Hobbies</span>
                     <div class="collector-view">
                         <!-- Higher priority stuff goes to the bottom of this list -->
                         <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
                                 <img src="./media/illust.png" alt="illust">
                                 <div class="desc-wrapper">
                                     <div class="desc">Drawing is fun. Creativity cannot be replaced by machines.</div>
@@ -106,7 +121,7 @@
                             </div>
                         </div>
                         <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
                                 <img src="./media/bocchi.jpg" alt="travel">
                                 <div class="desc-wrapper">
                                     <div class="desc">Anime. Stories & Musics are good. Characters are cute. Bravo.</div>
@@ -114,7 +129,7 @@
                             </div>
                         </div>
                         <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
                                 <img src="./media/jishoentry.jpeg" alt="jisho-entry">
                                 <div class="desc-wrapper">
                                     <div class="desc">My private tool, JishoNotes, is the largest project I built.</div>
@@ -122,7 +137,7 @@
                             </div>
                         </div>
                         <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.05; --hover-scale2: 1.55;">
+                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
                                 <img src="./media/travel.jpeg" alt="travel">
                                 <div class="desc-wrapper">
                                     <div class="desc">Travelling different areas, an eye-opening experience.</div>
@@ -337,12 +352,20 @@
                 </div>
             </section>
             <section id="contact" class="contact">
-                <div class="title">Contact</div>
-                <div class="desc">
-                    <a class="item" href="/v/i/n/c/e/n/t/cvpage.html" style="color: var(--font-color-2-half-fade); text-decoration: underline;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>file-account</title><path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M14,20V19C14,17.67 11.33,17 10,17C8.67,17 6,17.67 6,19V20H14M10,12A2,2 0 0,0 8,14A2,2 0 0,0 10,16A2,2 0 0,0 12,14A2,2 0 0,0 10,12Z" /></svg>
-                        Resume
-                    </a>
+                <div class="content">
+                    <div class="title">
+                        Contact Me
+                    </div>
+                    <div class="desc">
+                        <a class="item" href="/v/i/n/c/e/n/t/cvpage.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>email</title><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+                            konam40@gmail.com
+                        </a>
+                        <a class="item" href="/v/i/n/c/e/n/t/cvpage.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>file-account</title><path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M14,20V19C14,17.67 11.33,17 10,17C8.67,17 6,17.67 6,19V20H14M10,12A2,2 0 0,0 8,14A2,2 0 0,0 10,16A2,2 0 0,0 12,14A2,2 0 0,0 10,12Z" /></svg>
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </section>
             <footer>

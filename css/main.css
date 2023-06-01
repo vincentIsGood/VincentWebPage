@@ -10,15 +10,25 @@ background-image: linear-gradient()
 */
 
 :root{
-    --bg-color: rgb(216, 255, 255);
+    --bg-color: rgb(247, 255, 255);
     --bg-color-2: rgb(119, 119, 119);
     --bg-color-dark: rgb(32, 32, 32);
+    --bg-color-lighter: rgb(95, 95, 95);
     --font-color: rgb(32, 32, 32);
     --font-color-2: rgb(195, 231, 255);
-    --font-color-2-half-fade: rgba(195, 231, 255, 0.5);
+    --font-color-2-half-fade: rgba(195, 226, 255, 0.801);
     --font-color-white: rgb(222, 231, 236);
     --font-size: clamp(0.6rem, 1vw, 15px);
     --bg-clip-font-color: linear-gradient(97deg, rgb(255, 255, 255, 0.8), rgb(127, 182, 213));
+    
+    --svg-light-1: rgb(228, 225, 139);
+    --svg-dark-1: rgb(123, 150, 87);
+    --svg-light-2: rgb(143, 216, 159);
+    --svg-dark-2: rgb(124, 173, 108);
+    --svg-light-3: rgb(97, 179, 211);
+    --svg-dark-3: rgb(85, 127, 182);
+    --svg-light-4: rgb(238, 220, 64);
+    --svg-dark-4: rgb(159, 161, 37);
 
     --icon-color: rgb(67, 111, 192);
     --card-tag-color: rgb(69, 66, 214);
@@ -109,32 +119,6 @@ section .desc{
     background-color: rgb(142, 247, 159);
     z-index: -1;
 }
-
-.version-chooser{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.678);
-    font-size: 4rem;
-    color: var(--font-color-white);
-    transition: opacity 100ms;
-    opacity: 1;
-}
-.version-chooser.hidden{
-    display: none;
-}
-.version-chooser .chooser-title{
-    font-size: 2rem;
-}
-.version-chooser .version-box{
-    border: 1px solid var(--bg-color);
-    border-radius: 0.8rem;
-    padding: 2rem;
-}
 .grid-versions{
     padding: 2rem;
     display: grid;
@@ -154,7 +138,7 @@ section .desc{
 .top-bar{
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 6rem;
     padding-left: 5vw;
     padding-right: 5vw;
@@ -191,8 +175,9 @@ section .desc{
     background-color: var(--font-color);
 }
 .top-bar .collapsable-menu.hidden{
+    /* Make sure it's out of reach */
     opacity: 0;
-    transform: translateX(15vw);
+    transform: translateX(50vw);
 }
 .top-bar .collapsable-menu .item{
     box-sizing: border-box;
@@ -264,28 +249,90 @@ section .desc{
 /* Content Sections */
 /* INTRO */
 .intro{
-    height: 100vh;
     padding-top: 10rem;
-}
-.intro .collapsable{
-    padding: 1.5rem 1rem;
-}
-.intro .collapsable:first-of-type{
-    margin-top: 10vh;
-}
-.intro .right{
-    padding-left: 1rem;
-}
-.intro .right .title{
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+}
+.intro .title{
+    text-align: center;
+}
+.intro .top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding-bottom: 4rem;
+    margin-top: -12rem;
+}
+.intro .top .desc{
+    padding: 0 15rem;
+}
+.intro .top .title{
+    text-align: center;
+    font-size: 4rem;
+}
+.intro .middle{
+    margin-top: 10vh;
+    height: 100vh;
+}
+.intro .middle svg{
+    width: 5rem;
+    height: 5rem;
+}
+.intro .middle .content{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-areas: "a b"
+                         "c d";
+    gap: 6rem;
+    padding: 5rem;
+}
+@media only screen and (max-width: 1000px) {
+    .intro .middle .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95vw;
+        padding: 3rem;
+    }
+}
+.intro .middle .trait-item{
+    text-align: left;
+}
+/* Param: --svgbg-color, --svg-color */
+.intro .middle .trait-item svg{
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    text-align: left;
+    padding: 1rem;
+    box-sizing: content-box;
+    border-radius: 1rem;
+    background-color: var(--svgbg-color);
+    fill: var(--svg-color);
+}
+.intro .middle .trait-item .sub-title{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+.intro .bottom{
+    margin-top: 10vh;
+    padding-bottom: 4rem;
+    height: 100vh;
+    width: 100%;
 }
 .intro .collector-view{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(2, minmax(20rem, 1fr));
     grid-template-rows: min-content;
-    gap: 1rem;
+    gap: 2rem;
     width: 100%;
     height: 100%;
+    padding: 8rem;
+    padding-top: 10vh;
 }
 .intro .collector-view .photo-card{
     width: inherit;
@@ -299,31 +346,17 @@ section .desc{
     transform: rotateZ(var(--rotate)) scale(var(--hover-scale));
 }
 .intro .photo-card:hover{
-    /* Param: --rotate --hover-scale */
+    /* Param: --hover-scale */
     transform: scale(var(--hover-scale));
 }
 .intro .photo-card.animating:hover{
-    /* Param: --rotate --hover-scale2 */
+    /* Param: --hover-scale2 */
     transform: scale(var(--hover-scale2));
-}
-@media only screen and (max-width: 1000px) {
-    .intro{
-        flex-direction: column;
-    }
-    .intro .half-divided{
-        width: inherit;
-    }
-    .intro .right{
-        padding-left: 0;
-    }
-    .intro .left{
-        padding-bottom: 4rem;
-    }
 }
 
 /* TRANSITION SPACE */
 .transition-space{
-    margin-top: 20vh;
+    margin-top: 10vh;
     height: 25rem;
     background-image: linear-gradient(rgba(0,0,0,0), var(--bg-color-dark));
 }
@@ -388,6 +421,14 @@ section .desc{
     }
     .skills .skills-timeline{
         transform: scale(1.7) translateX(-20vw);
+    }
+}
+@media only screen and (max-width: 500px) {
+    .skills{
+        padding-bottom: 40vh;
+    }
+    .skills .skills-timeline{
+        transform: scale(0.8) translateX(10vw);
     }
 }
 
@@ -503,21 +544,37 @@ section .desc{
 
 /* CONTACT */
 .contact{
-    display: flex;
-    flex-direction: column;
     text-align: left;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
     padding-top: 15rem;
     padding-bottom: 5rem;
 }
+.contact .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 4rem;
+    background-color: var(--bg-color-lighter);
+    border-radius: 1rem;
+}
+.contact .desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0;
+}
 .contact .item{
     width: min-content;
     display: flex;
     align-items: center;
     color: var(--font-color-2-half-fade);
-    text-decoration: underline;
+    text-decoration: none;
     word-break: keep-all;
+}
+.contact .item:hover{
+    text-decoration: underline;
 }
 .contact .item svg{
     width: 3rem;

@@ -367,7 +367,7 @@ class AnimationUtils{
     static initCharacters(targetElement){
         AnimationUtils.chopWordsToElements(targetElement);
         GeneralUtils.iterate(targetElement.querySelectorAll(".char-wrapper span"), (element)=>{
-            element.style.transform = "translateY(4rem)";
+            element.style.transform = "translateY(10rem)";
         });
     }
 
@@ -378,7 +378,7 @@ class AnimationUtils{
     static animateCharacters(targetElement, finish, interCharDelay = 100){
         GeneralUtils.iterate(targetElement.querySelectorAll(".char-wrapper span"), (element, i)=>{
             element.animate({
-                transform: ["translateY(4rem)", "translateY(0)"],
+                transform: ["translateY(10rem)", "translateY(0)"],
             }, {
                 fill: "forwards",
                 delay: interCharDelay*i,
