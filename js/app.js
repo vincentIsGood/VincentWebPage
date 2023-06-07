@@ -31,7 +31,6 @@ window.onload = ()=>{
     setupIntro();
     setupSkills();
     setupProjects();
-    setupTransition();
 
     scrollUtils.registerDocumentScroll();
     // clear out loading screen here
@@ -190,19 +189,19 @@ function setupProjects(){
     });
 }
 
-function setupTransition(){
-    const transitionText = document.querySelector(".transition-text");
-    scrollUtils.registerListener({
-        callback(a,b,c,finish,notFinish,progress){
-            transitionText.querySelector("span").classList.remove("hidden");
-            notFinish();
-        },
-        outsideCallback(){
-            transitionText.querySelector("span").classList.add("hidden");
-        },
-        option: new ScrollUtilsOption({
-            startY: PositionUtils.absPos(transitionText).y - resolveCssValue("20vh"),
-            endY: PositionUtils.absPos(transitionText).y + resolveCssValue("20vh"),
-        }),
-    });
-}
+// function setupTransition(){
+//     const transitionText = document.querySelector(".transition-text");
+//     scrollUtils.registerListener({
+//         callback(a,b,c,finish,notFinish,progress){
+//             transitionText.querySelector("span").classList.remove("hidden");
+//             notFinish();
+//         },
+//         outsideCallback(){
+//             transitionText.querySelector("span").classList.add("hidden");
+//         },
+//         option: new ScrollUtilsOption({
+//             startY: PositionUtils.absPos(transitionText).y - resolveCssValue("20vh"),
+//             endY: PositionUtils.absPos(transitionText).y + resolveCssValue("20vh"),
+//         }),
+//     });
+// }
