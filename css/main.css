@@ -594,8 +594,21 @@ section .desc{
 
 /* FOOTER */
 footer{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     color: var(--font-color-2-half-fade);
     background-color: var(--bg-color-dark);
+}
+footer .right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+footer svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--font-color-2);
 }
