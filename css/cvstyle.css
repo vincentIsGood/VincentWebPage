@@ -93,6 +93,28 @@ a:visited, a{
 .sub-title-nopad{
     font-size: 1.3rem;
 }
+.horizontal{
+    display: flex;
+}
+.horizontal > *{
+    position: relative;
+    padding: 0 0.5rem;
+}
+.horizontal > *::before{
+    position: absolute;
+    content: "";
+    border-left: 1px solid;
+    margin-left: -0.5rem;
+    height: 60%;
+    width: 100%;
+    transform: translate(0, 20%);
+}
+.horizontal > *:nth-of-type(1)::before{
+    position: absolute;
+    content: "";
+    border-left: none;
+    margin-left: 0;
+}
 
 /* Specific */
 .skills-table{
