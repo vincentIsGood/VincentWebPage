@@ -456,7 +456,8 @@ section .desc{
 }
 .projects .grid-desc{
     display: grid;
-    grid-template-areas: "a a b" 
+    grid-template-areas: "z z z"
+                         "a a b" 
                          "d e b" 
                          "f g b" 
                          "c c c";
