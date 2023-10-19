@@ -58,6 +58,7 @@ body{
 
 .right-panel{
     color: var(--text-color2);
+    flex: 0;
 }
 
 section{
