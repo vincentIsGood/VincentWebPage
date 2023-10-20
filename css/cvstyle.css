@@ -30,12 +30,6 @@ body{
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
-
-.underline{
-    color: inherit;
-    text-decoration: underline;
-}
-
 .content-wrapper{
     width: 100%;
     height: max(max-content, 100vh);
@@ -69,6 +63,11 @@ a:visited, a{
     color: var(--text-color);
     text-decoration: none;
 }
+a.underline{
+    color: inherit;
+    text-decoration: underline;
+}
+
 .preserve-whitespace{
     white-space: pre;
 }
