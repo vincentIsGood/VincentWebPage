@@ -32,7 +32,7 @@ body{
 
 .content-wrapper{
     width: 100%;
-    height: max(max-content, 100vh);
+    /* height: max(max-content, 100vh); */
     display: flex;
     flex-direction: row;
 }
@@ -52,7 +52,8 @@ body{
 
 .right-panel{
     color: var(--text-color2);
-    flex: 0;
+    /* flex: 0; */
+    width: 50rem;
 }
 
 section{
@@ -109,7 +110,6 @@ a.underline{
 .horizontal > *::before{
     position: absolute;
     content: "";
-    border-left: 1px solid;
     margin-left: -0.5rem;
     height: 60%;
     width: 100%;
@@ -125,11 +125,11 @@ a.underline{
 /* Specific */
 .skills-table{
     font-size: 18px;
-    padding-bottom: 40px;
+    padding-bottom: 0.5rem;
 }
 
 .skills-table td{
-    padding-bottom: 6px;
+    padding-bottom: 0.2rem;
     vertical-align: text-top;
 }
 
@@ -137,4 +137,8 @@ a.underline{
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.skills-table ul > li{
+    padding-bottom: 0.5rem;
 }
