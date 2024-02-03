@@ -9,7 +9,7 @@
     <body>
         <div class="top-bar">
             <div class="name-item">Vincent Ko</div>
-            <div class="item"><a href="/index.jp.html">日本語</a></div>
+            <!-- <div class="item"><a href="/index.jp.html">日本語</a></div> -->
             <div class="item"><a href="/v/i/n/c/e/n/t/cvpage.html">Resume</a></div>
             <div class="item menu-button">
                 Menu
@@ -43,8 +43,6 @@
             </div>
         </div>
         <div class="content-wrapper">
-            <!-- <div class="parallax-bg-shape bg-shape"></div> -->
-            <!-- <div class="parallax-bg-shape bg-shape-2"></div> -->
             <section id="intro" class="intro">
                 <div class="top">
                     <div class="title">Software Developer</div>
@@ -101,45 +99,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bottom">
-                    <!-- TODO: It's good, but needs clicking, animate it some how -->
-                    <span class="title">Hobbies</span>
-                    <div class="collector-view">
-                        <!-- Higher priority stuff goes to the bottom of this list -->
-                        <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
-                                <img src="./media/illust.png" alt="illust">
-                                <div class="desc-wrapper">
-                                    <div class="desc">Drawing is fun. Creativity cannot be replaced by machines.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
-                                <img src="./media/bocchi.jpg" alt="travel">
-                                <div class="desc-wrapper">
-                                    <div class="desc">Anime. Stories & Musics are good. Characters are cute. Bravo.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
-                                <img src="./media/jishoentry.jpeg" alt="jisho-entry">
-                                <div class="desc-wrapper">
-                                    <div class="desc">My private tool, JishoNotes, is the largest project I built.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collection-wrapper">
-                            <div class="photo-card animating" style="--rotate: 0; --hover-scale: 1.20; --hover-scale2: 1.55;">
-                                <img src="./media/travel.jpeg" alt="travel">
-                                <div class="desc-wrapper">
-                                    <div class="desc">Travelling different areas, an eye-opening experience.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- <div class="bottom"></div> -->
             </section>
             <section class="transition-space"></section>
             <section id="skills" class="skills">
@@ -237,132 +197,172 @@
             </section>
             <section id="projects" class="projects">
                 <div class="top">
-                    <div class="title">Main Projects</div>
-                    <div class="grid-desc">
-                        <div class="collapsable card-like" style="grid-area: z;">
-                            <div class="sub-title">Infrastructure. Networking</div>
-                            <div class="desc fade-smaller">
-                                Many of my home (toy) services are hooked up by docker compose in my home server. A proxy (AdvancedWebServer and Apache) 
-                                is created to enable reverse proxying such that services designed for public-use can be accessed. 
-                                Hence, Software Defined Network is needed for these services to communicate within docker compose.
+                    <div class="title">Fullstack Projects</div>
+                    <div class="desc">Real experiences.</div>
+                    <div class="content">
+                        <div class="card">
+                            <div class="sub-title"><a href="https://github.com/vincentIsGood/vulnapp">Vulnapp</a></div>
+                            <div class="desc">
+                                A webapp demoing real-world hacking techniques. Example techniques:
+                                <ul style="padding-left: 2rem;">
+                                    <li>Session Hijacking</li>
+                                    <li>SQL Injection</li>
+                                </ul>
+                                <div style="padding-top: 1rem;">
+                                    Tech: JS, PHP and MySQL.
+                                </div>
                             </div>
                         </div>
-                        <div class="collapsable card-like" style="grid-area: b;">
+                        <div class="card">
                             <div class="sub-title">JishoNotes</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Spring Boot</div>
-                                <div class="tag-item">PostgreSQL</div>
-                                <div class="tag-item">ElasticSearch</div>
-                                <div class="tag-item">VueJS</div>
-                            </div>
-                            <div class="desc fade-smaller">
-                                This is my largest full stack project made using the tagged technologies, Social Login and RSS for news retrieval. Any new technologies 
-                                which can be used to improve my japanese skill are included into one app. 
-                                <br>
-                                Docker compose is used to hook up all the services into a virtual network. A yaml is designed so that all services
-                                can communicate with each other while being isolated from the outside world.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/JishoNotesAPI">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
+                            <div class="desc">
+                                Japanese learning webapp. Features include dictionary, flashcard system and even sentence analyzer.  
+                                Users can create account to create their own collection of words and read up-to-date news. 
+                                <div style="padding-top: 1rem;">
+                                    Tech: VueJS, Java Spring, PostgreSQL, ElasticSearch. Hosted with Ubuntu, Apache2 and Docker-Compose.
+                                </div>
                             </div>
                         </div>
-                        <div class="collapsable card-like" style="grid-area: a;">
-                            <div class="sub-title">AdvancedWebServer</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Pure Java</div>
-                                <div class="tag-item">HTTP Server</div>
-                                <div class="tag-item">WebSocket</div>
-                                <div class="tag-item">Multithreading</div>
-                            </div>
-                            <div class="desc fade-smaller">
-                                I got my hands dirty and started implementing HTTP/1.1, HTTP/2 and WebSocket
-                                from scratch. IETF's documents are read during the implementation. The server
-                                is still being used privately today.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/AdvancedWebServer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
+                        <div class="card">
+                            <div class="sub-title">YourAiDatabase</div>
+                            <div class="desc">
+                                An AI managed DB created to answer your questions based on the documents in the DB.
+                                <div style="padding-top: 1rem;">
+                                    Tech: JS, Python Flask, LangChain, ChromaDB
+                                </div>
                             </div>
                         </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">YourAIDatabase</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Python Flask</div>
-                                <div class="tag-item">LangChain</div>
-                                <div class="tag-item">HuggingFace</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="title">Other Projects</div>
+                    <div class="desc">Never stop creating.</div>
+                    <div class="wrapper-content">
+                        <div class="content">
+                            <div class="left">
+                                <div class="item selected">AdvancedWebServer</div>
+                                <div class="item">M3u8Downloader</div>
+                                <div class="item">SeekablePictureInPicture</div>
+                                <div class="item">SoundTools</div>
+                                <div class="item">EasyScreenCapture</div>
+                                <div class="item">ChromeRemoteNetworkLogger</div>
+                                <div class="item">Go Bard</div>
+                                <div class="item">The Road to Castle 3D</div>
+                                <div class="item">...Github</div>
                             </div>
-                            <div class="desc fade-smaller">
-                                This is your own little AI assistant that can do.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/YourAIDatabase">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
-                            </div>
-                        </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">Vulnapp</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Apache</div>
-                                <div class="tag-item">PHP</div>
-                                <div class="tag-item">MySQL</div>
-                                <div class="tag-item">Web Security</div>
-                            </div>
-                            <div class="desc fade-smaller">
-                                A simple web app made with many vulnerabilities, demonstrating 
-                                common web app exploits, including XSS, LFI, Session Hijacking, etc.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/vulnapp">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
-                            </div>
-                        </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">M3u8Downloader</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Pure Java</div>
-                                <div class="tag-item">Multithreading</div>
-                            </div>
-                            <div class="desc fade-smaller">
-                                It is one of the many programs I created still being used today. From parsing 
-                                an m3u8 file to using multithreading to download large pile of files, this
-                                is by no means a simple project. 
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/M3u8Downloader">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
-                            </div>
-                        </div>
-                        <div class="collapsable card-like">
-                            <div class="sub-title">Go Bard</div>
-                            <div class="tag bluish">Public</div>
-                            <div class="tag-list">
-                                <div class="tag-item">Golang</div>
-                            </div>
-                            <div class="desc fade-smaller">
-                                This is a Bard reverse engineering project. The aim of the project is to create
-                                a poc for interacting with Bard with a command line.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood/GoBard">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
-                            </div>
-                        </div>
-                        <div class="collapsable card-like" style="grid-area: c;">
-                            <div class="sub-title">More on Github</div>
-                            <div class="desc fade-smaller">
-                                Many more projects are available on Github. From simple proof of concept like,
-                                MultiHandlerJava; to computer science projects like, JavaCpuSimulator; to script
-                                like utilities like, AdvancedWebServer, Seekable Picture-In-Picture, JMarkdown; to 
-                                working web apps like JishoNotes.
-                                <div class="link"><a target="_blank" href="https://github.com/vincentIsGood?tab=repositories">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
-                                </a></div>
+                            <div class="right project-desc">
+                                <!-- Index correspond to menu-items from .left -->
+                                <div>
+                                    <div>
+                                        A light-weight java web server <highlight>built from scratch</highlight>. 
+                                        It supports <highlight>HTTP2 and WebSocket</highlight>. 
+                                        <br>
+                                        Lots of <highlight>optimizations</highlight>
+                                        and bug fixes have be encountered and solved. I have 
+                                        learnt a lot from this project
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/AdvancedWebServer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        The most valuable <highlight>Chrome Extension</highlight> I have ever developed.
+                                        Press one button combination to turn a web video into PiP.
+                                        Add subtitles to your video with srt files as well.
+                                        <br>
+                                        Learn how to play around with <highlight>locks (Mutex, Conditional)</highlight>
+                                        in this project.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/M3u8Downloader">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        Ever wanna download m3u8 files from the internet with
+                                        speed? This downloader is the tool which allows you 
+                                        to download m3u8 and ts files in <highlight>blazingly fast</highlight> speed 
+                                        with threads.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/SeekablePictureInPicture">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        A personal webapp tool used to do voice/noise separation
+                                        with <highlight>AI</highlight> tools. It is built with VueJS, ExpressJS and Python.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/SoundToolsBackend">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        If you want to <highlight>capture screen or audio</highlight> repeatedly with
+                                        just a press of a button, use this tool. This is useful if
+                                        you want to capture something very quickly in multiple files.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/EasyScreenCapture">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        Sometimes you do not want to open chrome devtools to monitor
+                                        your own chrome. Then you can use this tool to <highlight>log network
+                                        traffic of your chrome</highlight> remotely with Chrome Devtools Protocol (CDP).
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/ChromeRemoteNetworkLogger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        A <highlight>reverse engineering</highlight> project of Google Bard webapp with Golang 
+                                        which I learned in 2 days.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/GoBard">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <div>
+                                        Leader of the Final Year Project of a team of 2. <highlight>Unity 3D</highlight> RPG game. 
+                                        Many game mechanics are <highlight>built from scratch</highlight>. 
+                                        The game is develpoed as a framework for long-term game development. 
+                                        There are no repeating codes. There is only easy to understand code 
+                                        and, flexible APIs.
+                                    </div>
+                                    <div class="github-link">
+                                        <a target="_blank" href="https://github.com/vincentIsGood/TheRoadToCastle3D">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>github</title><path class=".path" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="hidden">
+                                    <a href="https://github.com/vincentIsGood?tab=repositories">https://github.com/vincentIsGood?tab=repositories</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- <section class="transition-text"><span class="hidden">Don't stop pushing forward.</span></section> -->
             <section id="future" class="future">
                 <div class="title">Future Plans</div>
                 <div class="content">

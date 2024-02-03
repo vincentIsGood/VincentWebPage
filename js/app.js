@@ -55,23 +55,23 @@ function setupIntro(){
     GeneralUtils.iterate(document.querySelectorAll(".intro .top .title"), AnimationUtils.initCharacters);
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".intro .top .title"), 500, "-100vh");
 
-    GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i, len)=>{
-        let offset = PositionUtils.offsetToCenter(element, document.querySelector(".intro .collector-view"));
-        element.style.left = `${offset.x}px`;
-        element.style.top = `${offset.y}px`;
-        element.style.setProperty("--rotate", (-30 + i*60/len) + "deg"); // range = 60deg (-30 to 30)
+    // GeneralUtils.iterate(document.querySelectorAll(".intro .photo-card"), (element, i, len)=>{
+    //     let offset = PositionUtils.offsetToCenter(element, document.querySelector(".intro .collector-view"));
+    //     element.style.left = `${offset.x}px`;
+    //     element.style.top = `${offset.y}px`;
+    //     element.style.setProperty("--rotate", (-30 + i*60/len) + "deg"); // range = 60deg (-30 to 30)
 
-        element.addEventListener("click", ()=>{
-            if(element.classList.contains("animating")){
-                element.style.left = 0;
-                element.style.top = 0;
-            }else{
-                element.style.left = `${offset.x}px`;
-                element.style.top = `${offset.y}px`;
-            }
-            element.classList.toggle("animating");
-        });
-    });
+    //     element.addEventListener("click", ()=>{
+    //         if(element.classList.contains("animating")){
+    //             element.style.left = 0;
+    //             element.style.top = 0;
+    //         }else{
+    //             element.style.left = `${offset.x}px`;
+    //             element.style.top = `${offset.y}px`;
+    //         }
+    //         element.classList.toggle("animating");
+    //     });
+    // });
 }
 
 function setupSkills(){
@@ -150,42 +150,19 @@ function setupSkills(){
 function setupProjects(){
     GeneralUtils.iterate(document.querySelectorAll(".projects .title"), AnimationUtils.initCharacters);
     ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .top .title"), 0, "-70vh");
+    ScrollTemplates.animateCharactersAt(scrollUtils, document.querySelector(".projects .bottom .title"), 0, "-70vh");
 
-    GeneralUtils.iterate(document.querySelectorAll(".projects .collapsable"), (element, i)=>{
-        if(MOBILE_MODE){
-            GeneralUtils.registerCssClassToggleClick(element, element.querySelector(".desc"), "fade-smaller");
-        }else GeneralUtils.registerCssClassToggleHover(element, element.querySelector(".desc"), "fade-smaller");
-        scrollUtils.registerListener({
-            outsideCallback: ()=>{
-                element.style.transform = "translateX(-100vw)";
-            },
-            callback: (a,b,c,finish)=>{
-                element.animate(
-                    [
-                        { opacity: "0", transform: "rotateZ(1deg)" }, 
-                        { opacity: "0.5", transform: "rotateZ(-1deg)" },
-                        { opacity: "1", transform: "rotateZ(0)" },
-                    ],
-                    {
-                        fill: "forwards",
-                        duration: 500,
-                        delay: i*200,
-                    }
-                ).addEventListener("finish", finish, {once: true});
-            },
-            option: new ScrollUtilsOption({
-                startY: PositionUtils.absPos(document.querySelector(".projects .title")).y + resolveCssValue("-70vh"),
-            }),
+    let currentlySelectedIndex = 0;
+    const projectDesc = document.querySelectorAll(".projects .bottom .right > div");
+    const projectMenuItems = document.querySelectorAll(".projects .bottom .left > div");
+    GeneralUtils.iterate(projectMenuItems, (ele, i)=>{
+        ele.addEventListener("click", ()=>{
+            projectMenuItems[currentlySelectedIndex].classList.remove("selected");
+            projectDesc[currentlySelectedIndex].classList.add("hidden");
+            ele.classList.add("selected");
+            projectDesc[i].classList.remove("hidden");
+            currentlySelectedIndex = i;
         });
-
-        element.querySelector(".link")?.animate(
-            {opacity: ["0.3", "1", "0.3"]},
-            {
-                iterations: Infinity,
-                delay: 1000,
-                duration: 2000,
-            }
-        );
     });
 }
 

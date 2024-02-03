@@ -12,15 +12,17 @@ background-image: linear-gradient()
 :root{
     --bg-color: rgb(247, 255, 255);
     --bg-color-2: rgb(119, 119, 119);
-    --bg-color-dark: rgb(32, 32, 32);
+    --bg-color-dark: rgb(0, 0, 0);
     --bg-color-lighter: rgb(95, 95, 95);
     --font-color: rgb(32, 32, 32);
-    --font-color-2: rgb(195, 231, 255);
-    --font-color-2-half-fade: rgba(195, 226, 255, 0.801);
+    --font-color-2nd: rgb(104, 104, 104);
+    --font-color-2: rgb(233, 233, 233);
+    --font-color-2-2nd: rgb(170, 170, 170);
+    --font-color-2-half-fade: rgba(255, 255, 255, 0.801);
     --font-color-white: rgb(222, 231, 236);
     --font-size: clamp(0.6rem, 1vw, 15px);
     --bg-clip-font-color: linear-gradient(97deg, rgb(255, 255, 255, 0.8), rgb(127, 182, 213));
-    
+
     --svg-light-1: rgb(228, 225, 139);
     --svg-dark-1: rgb(123, 150, 87);
     --svg-light-2: rgb(143, 216, 159);
@@ -34,6 +36,13 @@ background-image: linear-gradient()
     --card-tag-color: rgb(69, 66, 214);
     --card-tag-color-2: rgb(255, 51, 0);
     --color-bright: rgb(175, 166, 81);
+
+    --card-color: rgb(29, 28, 32);
+    --card-border-color: rgba(255, 255, 255, 0.08);
+
+    --proj-item-color: rgb(29, 28, 32);
+    --proj-item-selected-color: rgb(51, 49, 56);
+    --text-highlight: rgb(82, 172, 214);
 
     --top-bar-bg-color: rgb(216, 255, 255, 0.5);
     --shadow-color: rgb(70, 70, 70);
@@ -75,6 +84,10 @@ body{
 a{
     text-decoration: none;
     color: inherit;
+}
+
+highlight{
+    color: var(--text-highlight);
 }
 
 .content-wrapper{
@@ -257,6 +270,9 @@ section .desc{
     align-items: center;
     text-align: center;
 }
+.intro .desc{
+    color: var(--font-color-2nd);
+}
 .intro .title{
     text-align: center;
 }
@@ -321,12 +337,12 @@ section .desc{
     align-items: center;
     font-size: 2rem;
 }
-.intro .bottom{
+/* .intro .bottom{
     margin-top: 10vh;
     padding-bottom: 4rem;
     height: 100vh;
     width: 100%;
-}
+} */
 .intro .collector-view{
     display: grid;
     grid-template-columns: repeat(2, minmax(20rem, 1fr));
@@ -371,6 +387,9 @@ section .desc{
     text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
+}
+.skills .desc{
+    color: var(--font-color-2-2nd);
 }
 .skills .content{
     display: flex;
@@ -451,69 +470,82 @@ section .desc{
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
 }
-.projects .top{
+.projects .highlight{
+    color: var(--text-highlight);
+}
+.projects .desc{
+    color: var(--font-color-2-2nd);
+}
+.projects .top, .projects .bottom{
     padding-bottom: 6rem;
 }
-.projects .grid-desc{
+.projects .top .content{
     display: grid;
-    grid-template-areas: "z z z"
-                         "a a b" 
-                         "d e b" 
-                         "f g b" 
-                         "c c c";
-    gap: 1rem;
+    padding-top: 3rem;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2rem;
 }
-.projects .grid-desc .card-like{
-    padding: 2rem 0rem;
-    border: 1px solid var(--font-color-2);
+.projects .top .card{
+    padding: 1rem;
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: .5rem;
 }
-.projects .grid-desc .card-like .desc{
-    font-size: 1.3rem;
-    opacity: 1;
-    transition: font-size 500ms, opacity 500ms;
+.projects .top .card .desc{
+    font-size: 1.2rem;
+    text-align: left;
 }
-.projects .grid-desc .card-like .desc a svg{
-    min-width: 2rem;
-    min-height: 2rem;
-    transition: opacity 500ms;
-    fill: var(--font-color-2);
+.projects .bottom .wrapper-content{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
 }
-.projects .grid-desc .card-like .desc.fade-smaller{
-    font-size: 1rem;
-    opacity: 0.8;
+.projects .bottom .content{
+    display: flex;
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: .5rem;
+    text-align: left;
+    
+    width: 70vw;
 }
-@media only screen and (max-width: 1000px) {
-    .projects .grid-desc{
-        display: flex;
-        flex-direction: column;
-        font-size: 2rem;
-    }
-    .projects .grid-desc .card-like .desc{
-        font-size: 1.6rem;
-        opacity: 1;
-        transition: font-size 500ms, opacity 500ms;
-    }
-    .projects .grid-desc .card-like .desc.fade-smaller{
-        font-size: 1.4rem;
-        opacity: 0.8;
-    }
+.projects .bottom .left{
+    border-right: 1px solid var(--card-border-color);
+    width: 30vw;
 }
-
-/* TRANSITION TEXT */
-.transition-text{
-    text-align: center;
-    height: 25rem;
-    background-color: var(--bg-color-dark);
-    padding: 30rem 0;
+.projects .bottom .left .item{
+    background-color: var(--proj-item-color);
+    border-bottom: 1px solid var(--card-border-color);
+    padding: 1rem;
+    cursor: pointer;
+    overflow: hidden;
 }
-.transition-text span{
+.projects .bottom .left .item.selected{
+    background-color: var(--proj-item-selected-color);
+}
+.projects .bottom .left .item:last-child{
+    border-bottom: none;
+}
+.projects .bottom .right{
+    padding: 1rem;
+}
+.projects .bottom .right > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    transition: opacity 500ms;
-    color: var(--font-color-2);
-    opacity: 1;
+    height: 100%;
 }
-.transition-text span.hidden{
-    opacity: 0;
+.projects .bottom .right .hidden{
+    display: none;
+}
+.projects .bottom .right .github-link{
+    width: 5rem;
+    height: 5rem;
+    margin-left: auto;
+}
+.projects .bottom .right .github-link svg{
+    fill: var(--font-color-2);
 }
 
 /* FUTURE */
@@ -523,6 +555,9 @@ section .desc{
     text-align: center;
     color: var(--font-color-2);
     background-color: var(--bg-color-dark);
+}
+.future .desc{
+    color: var(--font-color-2-2nd);
 }
 .future .content{
     display: flex;

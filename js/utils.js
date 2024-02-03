@@ -262,7 +262,7 @@ class ListenerCallbackBuilder{
 }
 
 /**
- * Horizontal scroll only
+ * Vertical scroll only. Remember to call {@link ScrollUtils.registerDocumentScroll}
  */
 class ScrollUtils{
     constructor(){
@@ -274,9 +274,11 @@ class ScrollUtils{
 
     registerDocumentScroll(){
         document.addEventListener("scroll", ()=>{this.scrollHandler()});
+        
+        // call this once to simulate a scroll
         this.scrollHandler();
     }
-
+    
     scrollHandler(){
         let scrollY = window.scrollY;
         for(let i = this.listeners.length-1; i >= 0; i--){
@@ -331,18 +333,13 @@ class ScrollUtils{
                 );
                 continue;
             }else if(!listener.outsideCalled){
+                // if user is not in scroll area, `outside` callback will be called, ONCE.
                 listener.outsideCalled = true;
                 listener.outsideCallback && listener.outsideCallback(
                     scrollY, 
                     listenerOption.hasStart()? listenerOption.start() - scrollY : null, 
                     listenerOption.hasEnd()? listenerOption.end() - scrollY : null);
             }
-        }
-    }
-
-    deleteFinishedListeners(){
-        for(let indexToBeDeleted of this.removableListenerIndexes){
-            this.listeners.splice(indexToBeDeleted, 1);
         }
     }
 
@@ -463,15 +460,15 @@ class ScrollTemplates{
             },
             option: new ScrollUtilsOption({
                 startY: PositionUtils.absPos(targetElement).y + resolveCssValue(startOffsetY),
-                delay,
+                delay
             }),
         });
     }
 }
 
 /**
- * @param {string | number} strCss px or rem 
- * @returns {number}
+ * @param {string | number} strCss (eg. 123px, rem, vw, vh) 
+ * @returns {number} in pixels
  */
 function resolveCssValue(strCss){
     if(strCss == null) return 0;
