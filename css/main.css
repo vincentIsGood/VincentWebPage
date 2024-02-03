@@ -485,6 +485,13 @@ section .desc{
     grid-template-columns: 1fr 1.5fr 1fr;
     gap: 2rem;
 }
+@media screen and (max-width: 600px) {
+    .projects .top .content{
+        display: flex;
+        flex-direction: column;
+        padding-top: 3rem;
+    }
+}
 .projects .top .card{
     padding: 1rem;
     background-color: var(--card-color);
@@ -508,6 +515,11 @@ section .desc{
     text-align: left;
     
     width: 70vw;
+}
+@media screen and (max-width: 600px) {
+    .projects .bottom .content{
+        width: 90vw;
+    }
 }
 .projects .bottom .left{
     border-right: 1px solid var(--card-border-color);
