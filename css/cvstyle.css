@@ -3,21 +3,25 @@
 */
 
 :root{
-    --left-panel-color: #2b3e49;
+    --left-panel-color: #1e2a33;
+    --accent-color: #4a90e2;
+    --accent-light: #e8f1f9;
 
     --text-color: rgb(233, 217, 217);
     --text-color2: rgb(43, 42, 42);
     --text-minor-color: #6f9092;
+    --text-light: #888888;
 
     --sign-color: #96aaaa;
+    --border-color: #e0e0e0;
 
-    --section-padding-bot: 2rem;
+    --section-padding-bot: 1.8rem;
     --title-pad-bot: 0.5rem;
-    --title2-pad-bot: 1rem;
-    --item-pad-bot: 0.3rem;
+    --title2-pad-bot: 1.2rem;
+    --item-pad-bot: 0.4rem;
 
     --text-size-whole: 18px;
-    --text-size-left-panel: 16px;
+    --text-size-left-panel: 15px;
 }
 
 *{
@@ -45,19 +49,30 @@ body{
 
 .left-panel{
     font-size: var(--text-size-left-panel);
-    width: 20rem;
-    background-color: var(--left-panel-color);
+    width: 19rem;
+    background: linear-gradient(135deg, var(--left-panel-color) 0%, #253540 100%);
     color: var(--text-color);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
 }
 
 .right-panel{
     color: var(--text-color2);
-    /* flex: 0; */
-    width: 50rem;
+    flex: 1;
+    width: auto;
+    max-width: 55rem;
+    background-color: #fafafa;
 }
 
 section{
     padding-bottom: var(--section-padding-bot);
+}
+
+.right-panel > section {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.right-panel > section:last-child {
+    border-bottom: none;
 }
 
 a:visited, a{
@@ -79,26 +94,66 @@ a.underline{
 }
 .item, .desc{
     padding-bottom: var(--item-pad-bot);
+    line-height: 1.6;
+}
+
+.item.company{
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+
+.item.job-title{
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.item.date{
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.item.sign{
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
 }
 .minor-desc{
     color: var(--text-minor-color);
     padding-bottom: var(--item-pad-bot);
+    font-size: 0.95rem;
 }
 
 .title{
-    font-size: 2.5rem;
-    padding-bottom: var(--title-pad-bot);
+    font-size: 2.8rem;
+    padding-bottom: 0.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
 }
 .smaller-title{
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding-bottom: var(--title2-pad-bot);
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
 }
 .sub-title{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding-bottom: var(--title2-pad-bot);
+    font-weight: 600;
+    color: var(--text-color2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.left-panel .sub-title{
+    color: #FFB700;
 }
 .sub-title-nopad{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-light);
 }
 .horizontal{
     display: flex;
@@ -124,13 +179,19 @@ a.underline{
 
 /* Specific */
 .skills-table{
-    font-size: 18px;
-    padding-bottom: 0.5rem;
+    font-size: 16px;
+    padding-bottom: 1rem;
+    width: 100%;
 }
 
 .skills-table td{
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.3rem;
     vertical-align: text-top;
+    padding-right: 1.5rem;
+}
+
+.skills-table tr.sub-title {
+    padding-bottom: 0.5rem;
 }
 
 .skills-table ul, .skills-table li{
@@ -140,5 +201,6 @@ a.underline{
 }
 
 .skills-table ul > li{
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    line-height: 1.5;
 }
