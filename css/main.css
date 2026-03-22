@@ -421,7 +421,8 @@ highlight {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    height: 540px;
+    aspect-ratio: 800 / 500;
+    height: auto;
     background: rgba(15, 23, 42, 0.4);
     border-radius: 20px;
     border: 1px solid var(--card-border-color);
@@ -477,7 +478,8 @@ highlight {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    height: 180px;
+    aspect-ratio: 800 / 180;
+    height: auto;
     background: rgba(15, 23, 42, 0.4);
     border-radius: 20px;
     border: 1px solid var(--card-border-color);
@@ -549,7 +551,6 @@ highlight {
 
 .proj-title {
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
 }
@@ -631,13 +632,68 @@ highlight {
 
 @media screen and (max-width: 800px) {
     .microservices-wrapper {
-        transform: scale(0.8);
-        height: 400px;
+        width: 100%;
+        transform: scale(1);
+        /* Reset scale from original media query */
+        height: auto;
+        /* Ensure height is auto with aspect-ratio */
+    }
+
+    .ms-node {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .client-node,
+    .lb-node {
+        width: auto;
+    }
+
+    .db-node {
+        width: 140px;
     }
 
     .producer-consumer-wrapper {
-        transform: scale(0.8);
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding: 2rem 0;
         margin-top: -20px;
+        transform: scale(1);
+        /* Reset scale from original media query */
+        height: auto;
+        /* Ensure height is auto with aspect-ratio */
+    }
+
+    .producer-consumer-wrapper svg {
+        display: none !important;
+    }
+
+    .producer-consumer-wrapper .ms-node {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 80%;
+        max-width: 300px;
+        white-space: normal;
+    }
+
+    .producer-consumer-wrapper .producer-node::after,
+    .producer-consumer-wrapper .queue-node::after {
+        content: '↓';
+        position: absolute;
+        bottom: -2.3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        color: var(--color-bright);
+    }
+
+    .producer-consumer-wrapper .ms-node:hover {
+        transform: scale(1.05) !important;
     }
 
     .hero-title {
