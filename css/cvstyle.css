@@ -15,10 +15,11 @@
     --sign-color: #96aaaa;
     --border-color: #e0e0e0;
 
-    --section-padding-bot: 1.8rem;
+    --section-padding-bot: 1.6rem;
     --title-pad-bot: 0.5rem;
     --title2-pad-bot: 1.2rem;
-    --item-pad-bot: 0.4rem;
+    --item-pad-bot: 0.3rem;
+    --compact-desc-pad-bot: 0.2rem;
 
     --text-size-whole: 18px;
     --text-size-left-panel: 15px;
@@ -94,7 +95,11 @@ a.underline{
 }
 .item, .desc{
     padding-bottom: var(--item-pad-bot);
-    line-height: 1.6;
+    line-height: 1.4;
+}
+.item, .compact-desc{
+    padding-bottom: var(--compact-desc-pad-bot);
+    line-height: 1.2;
 }
 
 .item.company{
