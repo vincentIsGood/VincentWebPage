@@ -209,3 +209,31 @@ a.underline{
     padding-bottom: 0.4rem;
     line-height: 1.5;
 }
+
+/* Tools badges */
+.tools-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-category {
+    font-weight: 600;
+    color: var(--accent-color);
+    min-width: max-content;
+    font-size: 0.9rem;
+    margin-right: 0.2rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: rgba(74, 144, 226, 0.15);
+    color: var(--accent-color);
+    border-radius: 3px;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
