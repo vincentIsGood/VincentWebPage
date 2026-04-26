@@ -1,5 +1,3 @@
-/* AI Chatbot Logic */
-
 document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.querySelector('.chatbot-trigger');
     const windowEl = document.querySelector('.chatbot-window');
