@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let reconnectTimeout = null;
     let currentBotMessageDiv = null;
     let typingIndicator = null;
-    const wsUrl = 'ws://vincent.strsx.com/vwp/api/v1/chat';
+    const wsUrl = 'wss://vincent.strsx.com/vwp/api/v1/chat';
 
     function connectWebSocket() {
         if (reconnectTimeout) {
