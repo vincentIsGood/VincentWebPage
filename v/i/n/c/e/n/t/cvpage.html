@@ -6,6 +6,21 @@
     <meta name="description" content="CV of Vincent">
     <meta name="author" content="Vincent Ko">
     <link rel="stylesheet" href="/css/cvstyle.css">
+    <link rel="stylesheet" href="/css/chatbot.css">
+    <style>
+        :root {
+            --bg-gradient-1: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+            --bg-gradient-2: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            --bg-gradient-3: linear-gradient(135deg, #4ade80 0%, #10b981 100%);
+            --gradient-text: linear-gradient(to right, #38bdf8, #a855f7, #4ade80);
+            --shadow-glow: rgba(56, 189, 248, 0.2);
+            --card-border-color: rgba(255, 255, 255, 0.15);
+            --font-color: #e2e8f0;
+            --font-color-2nd: #94a3b8;
+            --color-bright: #38bdf8;
+            --card-color: rgba(15, 23, 42, 0.9); /* Darker and more opaque for white background */
+        }
+    </style>
 </head>
 
 <body>
@@ -334,6 +349,33 @@
             </section>
         </div>
     </div>
+    <div class="chatbot-container">
+        <div class="chatbot-welcome-bubble">Ask SAGE about my experience!</div>
+        <div class="chatbot-window glass-panel hidden">
+            <div class="chatbot-header">
+                <div class="chatbot-title">AI Assistant SAGE</div>
+                <button class="chatbot-close" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot">Hello there! This is SAGE. Do you want me to introduce my creator Vincent Ko to you?</div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" placeholder="Ask about projects, skills..." class="chatbot-input">
+                <button class="chatbot-send" aria-label="Send message">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <button class="chatbot-trigger" aria-label="Open AI chat">
+            <div class="chatbot-notification-dot"></div>
+            <svg viewBox="0 0 24 24">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg>
+        </button>
+    </div>
+    <script src="/js/chatbot.js"></script>
 </body>
 
 </html>

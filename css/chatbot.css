@@ -14,6 +14,7 @@
 
 /* Trigger Button */
 .chatbot-trigger {
+    position: relative; /* Ensure dot is relative to this button */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -33,6 +34,65 @@
     box-shadow: 0 15px 35px var(--shadow-glow);
 }
 
+/* Unread Notification Dot */
+.chatbot-notification-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #ff5f56; /* Red */
+    border: 2px solid var(--bg-color, #0b0f19);
+    border-radius: 50%;
+    z-index: 1001;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-notification-dot.hidden {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+/* Attention Grabbing Pulse */
+.chatbot-trigger {
+    animation: pulse-glow 3s infinite;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+/* Welcome Bubble */
+.chatbot-welcome-bubble {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: max-content;
+    max-width: 220px;
+    background: var(--card-color, rgba(30, 41, 59, 0.9));
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border-color, rgba(255, 255, 255, 0.1));
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    border-bottom-right-radius: 2px;
+    font-size: 0.85rem;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+    z-index: 999;
+}
+
+.chatbot-welcome-bubble.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .chatbot-trigger svg {
     width: 30px;
     height: 30px;
@@ -50,6 +110,14 @@
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
     transform-origin: bottom right;
+
+    /* Glassmorphism fallback/defaults */
+    background: var(--card-color, rgba(15, 23, 42, 0.8));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border-color, rgba(255, 255, 255, 0.1));
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .chatbot-window.hidden {
@@ -200,4 +268,11 @@
 @keyframes typing {
     0%, 80%, 100% { transform: scale(0); }
     40% { transform: scale(1); }
+}
+
+/* Hide from Print */
+@media print {
+    .chatbot-container {
+        display: none !important;
+    }
 }

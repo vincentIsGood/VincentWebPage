@@ -5,12 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = document.querySelector('.chatbot-input');
     const sendBtn = document.querySelector('.chatbot-send');
     const messagesContainer = document.querySelector('.chatbot-messages');
+    const welcomeBubble = document.querySelector('.chatbot-welcome-bubble');
+    const notificationDot = document.querySelector('.chatbot-notification-dot');
 
     let socket = null;
     let reconnectTimeout = null;
     let currentBotMessageDiv = null;
     let typingIndicator = null;
     const wsUrl = 'wss://vincent.strsx.com/vwp/api/v1/chat';
+
+    // Show welcome bubble after 3 seconds
+    setTimeout(() => {
+        if (windowEl && windowEl.classList.contains('hidden') && welcomeBubble) {
+            welcomeBubble.classList.add('visible');
+        }
+    }, 3000);
 
     function connectWebSocket() {
         if (reconnectTimeout) {
@@ -102,6 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.addEventListener('click', () => {
         const isHidden = windowEl.classList.contains('hidden');
         windowEl.classList.toggle('hidden');
+        
+        if (welcomeBubble) {
+            welcomeBubble.classList.remove('visible');
+        }
+
+        if (notificationDot) {
+            notificationDot.classList.add('hidden');
+        }
+
         if (isHidden) {
             input.focus();
             connectWebSocket();
@@ -110,6 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn.addEventListener('click', () => {
         windowEl.classList.add('hidden');
+    });
+
+    // Hide welcome bubble on trigger hover
+    trigger.addEventListener('mouseenter', () => {
+        if (welcomeBubble) {
+            welcomeBubble.classList.remove('visible');
+        }
     });
 
     // Handle Message Sending
