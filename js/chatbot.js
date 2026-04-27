@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const messagesContainer = document.querySelector('.chatbot-messages');
     const welcomeBubble = document.querySelector('.chatbot-welcome-bubble');
     const notificationDot = document.querySelector('.chatbot-notification-dot');
+    const container = document.querySelector('.chatbot-container');
+    const aiWord = document.querySelector('.ai-word');
 
     let socket = null;
     let reconnectTimeout = null;
@@ -14,12 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let typingIndicator = null;
     const wsUrl = 'wss://vincent.strsx.com/vwp/api/v1/chat';
 
-    // Show welcome bubble after 3 seconds
+    // Show welcome bubble after 2 seconds
     setTimeout(() => {
         if (windowEl && windowEl.classList.contains('hidden') && welcomeBubble) {
             welcomeBubble.classList.add('visible');
+
+            // Auto-hide after 5 seconds (only on index.html, detected via aiWord)
+            if (aiWord) {
+                setTimeout(() => {
+                    welcomeBubble.classList.remove('visible');
+                }, 5000);
+            }
         }
-    }, 3000);
+    }, 2000);
 
     function connectWebSocket() {
         if (reconnectTimeout) {
@@ -120,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
             notificationDot.classList.add('hidden');
         }
 
+        // Update position immediately so it moves to bottom-right when opening
+        updatePosition();
+
         if (isHidden) {
             input.focus();
             connectWebSocket();
@@ -128,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn.addEventListener('click', () => {
         windowEl.classList.add('hidden');
+        // Update position so it moves back to hero if at top
+        updatePosition();
     });
 
     // Hide welcome bubble on trigger hover
@@ -136,6 +150,55 @@ document.addEventListener('DOMContentLoaded', () => {
             welcomeBubble.classList.remove('visible');
         }
     });
+
+    // Hero Integration Logic
+    function updatePosition() {
+        if (!aiWord || !container || !trigger) return;
+
+        const isHero = window.scrollY < 50 && windowEl.classList.contains('hidden');
+        
+        if (isHero) {
+            const wordRect = aiWord.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            const triggerRect = trigger.getBoundingClientRect();
+
+            // Calculate bottom/right instead of top/left for smooth transition
+            const targetBottom = window.innerHeight - wordRect.bottom + 20 - 10;
+            const targetRight = window.innerWidth - wordRect.right - 30 - 35;
+
+            container.style.bottom = `${targetBottom}px`;
+            container.style.right = `${targetRight}px`;
+
+            // Apply hero-specific styles directly
+            trigger.style.width = '40px';
+            trigger.style.height = '40px';
+            trigger.style.background = 'transparent';
+            trigger.style.border = '1px solid var(--color-bright)';
+            trigger.style.boxShadow = 'none';
+            trigger.querySelector('svg').style.fill = 'var(--color-bright)';
+            trigger.querySelector('svg').style.width = '20px';
+            trigger.querySelector('svg').style.height = '20px';
+        } else {
+            // Revert to corner state (letting CSS transitions handle it)
+            container.style.bottom = '2rem';
+            container.style.right = '2rem';
+
+            // Revert trigger styles
+            trigger.style.width = '';
+            trigger.style.height = '';
+            trigger.style.background = '';
+            trigger.style.border = '';
+            trigger.style.boxShadow = '';
+            trigger.querySelector('svg').style.fill = '';
+            trigger.querySelector('svg').style.width = '';
+            trigger.querySelector('svg').style.height = '';
+        }
+    }
+
+    window.addEventListener('scroll', updatePosition);
+    window.addEventListener('resize', updatePosition);
+    // Initial check
+    setTimeout(updatePosition, 100);
 
     // Handle Message Sending
     const sendMessage = () => {
