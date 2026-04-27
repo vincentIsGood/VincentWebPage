@@ -68,6 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    function markdownToHtml(text) {
+        if (typeof marked !== 'undefined') {
+            return marked.parse(text);
+        }
+        return text; // Fallback
+    }
+
     function handleServerMessage(data) {
         switch (data.type) {
             case 'ready':
@@ -91,8 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendBotChunk(content) {
         if (!currentBotMessageDiv) {
             currentBotMessageDiv = appendMessage('', 'bot');
+            currentBotMessageDiv.dataset.raw = '';
         }
-        currentBotMessageDiv.textContent += content;
+        
+        // Append raw markdown chunk
+        currentBotMessageDiv.dataset.raw += content;
+        // Parse whole raw text to HTML
+        currentBotMessageDiv.innerHTML = markdownToHtml(currentBotMessageDiv.dataset.raw);
+        
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
@@ -224,7 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendMessage(text, sender) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
+        
+        if (sender === 'bot') {
+            msgDiv.innerHTML = markdownToHtml(text);
+        } else {
+            msgDiv.textContent = text;
+        }
         
         // Simple inline style for system messages
         if (sender === 'system') {
