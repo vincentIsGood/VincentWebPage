@@ -27,7 +27,10 @@
     <div class="content-wrapper">
         <div class="right-panel">
             <a href="https://vincent.strsx.com" class="qr-code-link">
-                <img src="/media/icons/qr-code.svg" class="qr-code" alt="Portfolio QR Code">
+                <div class="qr-wrapper">
+                    <div id="qr-code" class="qr-code"></div>
+                    <div class="qr-label">vincent.strsx.com</div>
+                </div>
             </a>
             <section>
                 <div class="title">Vincent Ko</div>
@@ -380,6 +383,8 @@
         </button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="/js/qr-code-styling.min.js"></script>
+    <script src="/js/qr-code.js"></script>
     <script src="/js/chatbot.js"></script>
 </body>
 
