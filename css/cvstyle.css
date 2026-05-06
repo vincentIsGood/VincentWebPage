@@ -50,10 +50,30 @@ body{
 }
 
 .right-panel{
+    position: relative;
     color: var(--text-color2);
     width: 100%;
     max-width: 70rem;
     background-color: #fafafa;
+}
+
+.qr-code-link {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+.qr-code {
+    width: 100px;
+    height: 100px;
+}
+
+@media print {
+    .qr-code-link {
+        display: block;
+    }
 }
 
 section{
