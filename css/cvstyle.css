@@ -58,7 +58,7 @@ body{
 }
 
 .qr-code-link {
-    display: none;
+    display: block;
     position: absolute;
     top: 4rem;
     right: 2rem;
@@ -123,12 +123,6 @@ body{
     color: var(--accent-color);
     margin-top: 4px;
     font-family: 'Inter', sans-serif;
-}
-
-@media print {
-    .qr-code-link {
-        display: block;
-    }
 }
 
 section{
@@ -325,4 +319,58 @@ a.underline{
     font-size: 0.85rem;
     line-height: 1.2;
     white-space: nowrap;
+}
+
+/* Print Optimizations */
+@media print {
+    @page {
+        /* This creates a very long page. You may need to adjust the height (1200mm) 
+           depending on your content length. In the Chrome Print dialog, 
+           set "Paper size" to "Default" for this to take effect. */
+        size: 297mm 1200mm; 
+        margin: 10mm;
+    }
+
+    body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .content-wrapper {
+        display: block !important;
+    }
+
+    .content-wrapper > * {
+        padding: 0 !important;
+        padding-top: 1rem !important;
+    }
+
+    .right-panel {
+        max-width: 100% !important;
+        width: 100% !important;
+        background-color: white !important;
+        box-shadow: none !important;
+    }
+
+    /* Prevent sections from being split across pages if it does paginate */
+    section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Hide the version switcher and chatbot (already handled in chatbot.css, but good to be sure) */
+    .header-info a[href*="cvpagejp.html"],
+    .header-info a[href*="cvpage.html"],
+    .header-info a[href*="cvpagejp.html"] + .separator,
+    .header-info .separator:last-of-type,
+    .chatbot-container {
+        display: none !important;
+    }
+
+    /* Ensure QR code stays in a good spot */
+    .qr-code-link {
+        top: 1rem !important;
+        right: 1rem !important;
+    }
 }
