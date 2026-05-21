@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (windowEl && windowEl.classList.contains('hidden') && welcomeBubble) {
             welcomeBubble.classList.add('visible');
 
-            // Auto-hide after 10 seconds (only on index.html, detected via aiWord)
+            // Auto-hide after 8 seconds (only on index.html, detected via aiWord)
             if (aiWord) {
                 setTimeout(() => {
                     welcomeBubble.classList.remove('visible');
-                }, 10_000);
+                }, 8_000);
             }
         }
     }, 2000);
