@@ -165,6 +165,15 @@
     padding: 0.2rem;
 }
 
+.chatbot-disclaimer {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--card-border-color);
+    background: rgba(251, 191, 36, 0.06);
+    color: var(--font-color-2nd);
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+
 .chatbot-close:hover {
     color: #fff;
 }
