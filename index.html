@@ -4,295 +4,537 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vincent Ko | Backend & AI Engineering</title>
-    <!-- Using Google Fonts: Inter, Outfit, Fira Code -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Vincent Ko — AI Engineer and Security Engineer building multi-agent systems, production RAG, and automated detection engineering.">
+    <title>Vincent Ko | AI Engineer & Security Engineer</title>
+    <!-- Google Fonts: Inter, Outfit, Fira Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/chatbot.css">
+    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 
 <body>
-    <div class="top-bar">
-        <div class="name-item">Vincent Ko</div>
-        <div class="item"><a href="/v/i/n/c/e/n/t/cvpage.html">Resume</a></div>
-        <div class="item menu-button" onclick="document.querySelector('.collapsable-menu').classList.toggle('hidden')">
-            Menu
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>menu</title>
-                <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-            </svg>
-            <div class="collapsable-menu hidden">
-                <a class="item" href="#intro">Intro <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-                <a class="item" href="#ai-agents">AI Productivity <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-                <a class="item" href="#ai-stack">AI Stack <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-                <a class="item" href="#architecture">Architecture <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-                <a class="item" href="#projects">Projects <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-                <a class="item" href="#contact">Contact <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M10,17L15,12L10,7V17Z" />
-                    </svg></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Decorative Animated Background Blobs -->
+    <!-- Decorative background -->
     <div class="bg-gradient-blob blob-1"></div>
     <div class="bg-gradient-blob blob-2"></div>
     <div class="bg-gradient-blob blob-3"></div>
+    <div class="bg-grid"></div>
 
-    <div class="content-wrapper">
-        <section id="intro" class="intro hero-section">
-            <div class="top glass-panel" style="background: transparent; border: none; box-shadow: none;">
-                <div class="title hero-title">Architecting Scale, Driven by <span class="ai-word">AI</span></div>
-                <div class="desc hero-desc">
-                    I build robust backend systems and leverage <highlight>teams of AI agents</highlight> to multiply
-                    productivity by 10x.
+    <header class="top-bar">
+        <a class="name-item" href="#intro">Vincent Ko<span class="brand-dot"></span></a>
+
+        <nav class="desktop-nav" aria-label="Primary">
+            <a href="#focus">Focus</a>
+            <a href="#sage">SAGE</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="nav-resume" href="/v/i/n/c/e/n/t/cvpage.html">Resume <span aria-hidden="true">↗</span></a>
+
+        <div class="item menu-button" role="button" tabindex="0" aria-label="Toggle menu" aria-expanded="false">
+            Menu
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+            </svg>
+            <div class="collapsable-menu hidden">
+                <a class="item" href="#focus">Focus <span aria-hidden="true">→</span></a>
+                <a class="item" href="#sage">SAGE <span aria-hidden="true">→</span></a>
+                <a class="item" href="#experience">Experience <span aria-hidden="true">→</span></a>
+                <a class="item" href="#projects">Projects <span aria-hidden="true">→</span></a>
+                <a class="item" href="#contact">Contact <span aria-hidden="true">→</span></a>
+                <a class="item" href="/v/i/n/c/e/n/t/cvpage.html">Resume <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- HERO -->
+        <section id="intro" class="hero">
+            <div class="hero-eyebrow">
+                <span class="status-dot"></span>
+                AI Engineer · Security Engineer @ Crypto.com
+            </div>
+
+            <h1 class="hero-title">
+                Multi-agent <span class="ai-word">AI</span><br>
+                that ships real work.
+            </h1>
+
+            <p class="hero-sub">
+                I'm Vincent Ko. I build production agent systems, RAG pipelines, and detection automation —
+                then measure whether they actually behave.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#projects">See selected work</a>
+                <button class="btn btn-ghost ask-sage-btn" type="button">Ask SAGE <span aria-hidden="true">↗</span></button>
+                <a class="btn btn-ghost" href="/v/i/n/c/e/n/t/cvpage.html">Resume</a>
+            </div>
+
+            <div class="hero-meta">
+                <span>Hong Kong</span>
+                <span class="meta-sep">·</span>
+                <span>Hybrid</span>
+                <span class="meta-sep">·</span>
+                <span>Detection Engineering</span>
+            </div>
+
+            <div class="hero-stats" aria-label="Selected outcomes">
+                <div class="stat">
+                    <div class="stat-value">7x</div>
+                    <div class="stat-label">backend speed increase</div>
+                    <div class="stat-note">multi-threading + data structures</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">48%</div>
+                    <div class="stat-label">faster agent responses</div>
+                    <div class="stat-note">12 → 6.3 minutes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">51%</div>
+                    <div class="stat-label">lower multi-agent cost</div>
+                    <div class="stat-note">$1.02 → $0.50 per run</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">9.25x</div>
+                    <div class="stat-label">smaller cross-agent payload</div>
+                    <div class="stat-note">13,994 → 1,303 chars</div>
+                </div>
+            </div>
+
+            <a class="hero-scroll" href="#focus" aria-label="Scroll to focus section">
+                <span>Scroll to explore</span>
+                <span aria-hidden="true">↓</span>
+            </a>
+        </section>
+
+        <!-- FOCUS -->
+        <section id="focus" class="section">
+            <div class="section-head reveal">
+                <div class="section-kicker">01 / Focus</div>
+                <h2 class="section-heading">AI systems that hold up in production.</h2>
+                <p class="section-lead">
+                    Where agentic AI meets security engineering: automated detection, multi-agent orchestration,
+                    retrieval, tool wiring, and evaluation.
+                </p>
+            </div>
+
+            <div class="focus-grid">
+                <article class="focus-card reveal">
+                    <div class="focus-icon focus-icon-cyan" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 1 3 3c0 .6-.2 1.2-.5 1.6l2.3 1.3A3 3 0 0 1 21 8a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-2.6-1.5l-2.3 1.3c.3.4.5 1 .5 1.6a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-.6.2-1.2.5-1.6l-2.3-1.3A3 3 0 0 1 3 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3c1.1 0 2.1.6 2.6 1.5l2.3-1.3c-.3-.4-.5-1-.5-1.6a3 3 0 0 1 3-3Zm0 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>
+                    </div>
+                    <h3>Multi-agent orchestration</h3>
+                    <p>
+                        Agent teams with clear roles, tool boundaries, and hand-offs. Built with LangGraph,
+                        Bedrock AgentCore, and custom orchestration loops.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">LangGraph</span><span class="chip">AgentCore</span><span class="chip">MCP</span>
+                    </div>
+                </article>
+
+                <article class="focus-card reveal">
+                    <div class="focus-icon focus-icon-violet" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 2.2 6 2.2v4.6c0 3.9-2.5 7.7-6 9-3.5-1.3-6-5.1-6-9V6.4l6-2.2Zm-1 3.3v3.2H8v2h3v3.2h2v-3.2h3v-2h-3V7.5h-2Z"/></svg>
+                    </div>
+                    <h3>Detection engineering</h3>
+                    <p>
+                        Detection-as-code workflows: Sumo Logic CSE rules, MITRE ATT&amp;CK gap analysis,
+                        log-source wiring, alert triage, and noise reduction.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Sumo Logic CSE</span><span class="chip">Terraform</span><span class="chip">ATT&amp;CK</span>
+                    </div>
+                </article>
+
+                <article class="focus-card reveal">
+                    <div class="focus-icon focus-icon-green" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3Zm0 4h18v2H3V7Zm0 4h12v2H3v-2Zm0 4h18v2H3v-2Zm0 4h12v2H3v-2Z"/></svg>
+                    </div>
+                    <h3>Evaluation &amp; observability</h3>
+                    <p>
+                        Tracing, task-outcome and behavior evaluation, fallback-policy testing, and tighter
+                        agent loops without quality loss.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Agent tracing</span><span class="chip">Behavior eval</span><span class="chip">LiteLLM</span>
+                    </div>
+                </article>
+
+                <article class="focus-card reveal">
+                    <div class="focus-icon focus-icon-amber" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16v4H4V4Zm0 6h16v4H4v-4Zm0 6h16v4H4v-4Z"/></svg>
+                    </div>
+                    <h3>Production AI backends</h3>
+                    <p>
+                        MCP server implementation, third-party MCP tool wiring and access controls, plus
+                        FastAPI/NestJS services, RAG, queues, and AWS infrastructure.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">MCP</span><span class="chip">FastAPI</span><span class="chip">NestJS</span><span class="chip">AWS</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SAGE -->
+        <section id="sage" class="section sage-section">
+            <div class="section-head reveal">
+                <div class="section-kicker">02 / Personal project</div>
+                <h2 class="section-heading">SAGE — my personal multi-agent platform.</h2>
+                <p class="section-lead">
+                    A personal multi-agent assistant built for my own workflows. It plans, delegates, calls tools,
+                    and streams results through a web UI — and it powers the chat on this page.
+                </p>
+            </div>
+
+            <div class="sage-layout">
+                <div class="sage-copy reveal">
+                    <div class="pill-row">
+                        <span class="pill pill-green">Personal use</span>
+                        <span class="pill">Websocket bot</span>
+                    </div>
+
+                    <p>
+                        SAGE is a multi-agent assistant I designed and built from scratch: a lead orchestrator
+                        decomposes a goal, routes work to specialist agents like <strong>Mage</strong>, and combines
+                        their output.
+                    </p>
+                    <p>
+                        It runs the small websocket bot behind the chat bubble here, so visitors can ask it about my
+                        experience. Under the hood: orchestration, tool/MCP wiring, evaluation, and failure handling.
+                    </p>
+
+                    <ul class="check-list">
+                        <li>Lead orchestrator + specialist agents</li>
+                        <li>Tool and MCP wiring, with access controls</li>
+                        <li>Streaming chat UI; schedules, notifications, analytics in progress</li>
+                        <li>Tracing, behavior evaluation, and self-improvement</li>
+                        <li>Local-model friendly (DGX Spark)</li>
+                    </ul>
+
+                    <div class="sage-note">
+                        <strong>Why it matters:</strong> a real system I use daily, not a demo. Happy to walk through
+                        the architecture in an interview.
+                    </div>
+                </div>
+
+                <figure class="sage-shot reveal">
+                    <a href="./media/sage.png" target="_blank" rel="noopener" aria-label="Open full-size SAGE screenshot">
+                        <img src="./media/sage.png" alt="SAGE multi-agent interface showing a chat with Sage and a Tokyo fare analysis">
+                    </a>
+                    <figcaption>Real SAGE interface: lead orchestrator, specialist agents, and a live fare analysis. Click to enlarge.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+            <div class="section-head reveal">
+                <div class="section-kicker">03 / Experience</div>
+                <h2 class="section-heading">From blockchain monitoring to detection automation.</h2>
+                <p class="section-lead">
+                    Two chapters at Crypto.com: first building large-scale blockchain security software, now
+                    bringing multi-agent automation into the Detection Engineering department.
+                </p>
+            </div>
+
+            <div class="experience-tabs reveal">
+                <div class="tab-list" role="tablist" aria-label="Experience timeline">
+                    <button class="tab-button active" type="button" role="tab" aria-selected="true" data-tab="current">2026 — Present</button>
+                    <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab="previous">2024 — 2026</button>
+                </div>
+
+                <div class="tab-panel active" id="tab-current" role="tabpanel">
+                    <article class="role-card">
+                        <div class="role-head">
+                            <div>
+                                <div class="role-company">Crypto.com</div>
+                                <div class="role-title">AI Engineer, Security Engineer</div>
+                                <div class="role-meta">Jul 2026 — Present · Hong Kong SAR · Hybrid</div>
+                            </div>
+                            <span class="pill pill-green">Current</span>
+                        </div>
+
+                        <p class="role-summary">
+                            AI Engineer + Security Engineer in the Detection Engineering team, automating detection
+                            workflows.
+                        </p>
+
+                        <div class="role-grid">
+                            <div class="role-group">
+                                <div class="role-group-title">Agentic AI &amp; automation</div>
+                                <ul>
+                                    <li>Multi-agent use case design &amp; development</li>
+                                    <li>Accurate multi-agent orchestration</li>
+                                    <li>Production RAG and MCP wiring/development</li>
+                                    <li>Agent security: access controls and write-tool guards</li>
+                                    <li>Agent self-improvement</li>
+                                </ul>
+                            </div>
+                            <div class="role-group">
+                                <div class="role-group-title">Evaluation &amp; observability</div>
+                                <ul>
+                                    <li>Agent tracing &amp; observability</li>
+                                    <li>Task-outcome and behavior evaluation</li>
+                                    <li>Fallback policy and accurate tool-use checks</li>
+                                    <li>Agent loop optimization</li>
+                                </ul>
+                            </div>
+                            <div class="role-group">
+                                <div class="role-group-title">Detection engineering</div>
+                                <ul>
+                                    <li>Sumo Logic CSE and Detection as Code (Terraform)</li>
+                                    <li>Log-source wiring and alert triage</li>
+                                    <li>MITRE ATT&amp;CK gap analysis</li>
+                                    <li>False-positive / noise reduction</li>
+                                    <li>CSE rule fine-tuning</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="role-footer">
+                            <div class="chip-row">
+                                <span class="chip">LiteLLM</span><span class="chip">Terraform + Spacelift</span>
+                                <span class="chip">AWS AgentCore</span><span class="chip">ECS</span><span class="chip">SQS</span>
+                                <span class="chip">MCP</span>
+                            </div>
+                            <div class="role-quote">“Cross-team communication is of utmost importance.”</div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="tab-panel" id="tab-previous" role="tabpanel">
+                    <article class="role-card">
+                        <div class="role-head">
+                            <div>
+                                <div class="role-company">Crypto.com</div>
+                                <div class="role-title">Security Engineer</div>
+                                <div class="role-meta">Jun 2024 — Mar 2026 · Hong Kong SAR · Hybrid</div>
+                            </div>
+                            <span class="pill">Previous</span>
+                        </div>
+
+                        <p class="role-summary">
+                            Blockchain monitoring and multi-agent security review. Cut blockchain project
+                            development time from 2–3 weeks to 1 week.
+                        </p>
+
+                        <div class="role-grid two-col">
+                            <div class="role-group">
+                                <div class="role-group-title">AI Code Reviewer (multi-agent)</div>
+                                <ul>
+                                    <li>Production multi-agent review system on AWS EC2 with FastAPI and producer-consumer</li>
+                                    <li>LangGraph workflows for file indexing (PGvector) and deep analysis</li>
+                                    <li>Tools for multi-repo referencing, symbol retrieval, RAG, and delegation</li>
+                                    <li>Interactive GitHub reviewer + summarizer agent</li>
+                                    <li>100+ vulnerabilities found; 7x speed increase; 40% token reduction</li>
+                                </ul>
+                            </div>
+                            <div class="role-group">
+                                <div class="role-group-title">Blockchain security software</div>
+                                <ul>
+                                    <li>Large-scale blockchain monitoring (NestJS, microservices, AWS)</li>
+                                    <li>1.2M+ monthly active users; deposits, withdrawals, and trading volume</li>
+                                    <li>100+ repos automated with Claude Code agents</li>
+                                    <li>Double-spending detection; new chains in 1 day</li>
+                                    <li>Prometheus, Grafana, PostgreSQL, Kubernetes, Docker Compose</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="earlier">
+                    <span class="earlier-label">Earlier</span>
+                    <span>Software Developer Intern @ HKU (2023)</span>
+                    <span>Freelance Web Creator (2020)</span>
                 </div>
             </div>
         </section>
 
-        <!-- Terminal Visualization Section -->
-        <section id="ai-agents" class="ai-agents-section">
-            <h2 class="section-heading gradient-text">AI-Powered Productivity</h2>
-            <div class="terminal-container glass-panel">
-                <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="close"></span>
-                        <span class="minimize"></span>
-                        <span class="maximize"></span>
-                    </div>
-                    <div class="terminal-title">agent-swarm-coordinator ~ zsh</div>
-                </div>
-                <div class="terminal-body font-mono">
-                    <div class="typewriter-line line-1"><span class="prompt">$</span> ./deploy_agents
-                        --target=code_review</div>
-                    <div class="typewriter-line line-2 delay-1">[INFO] Initializing 5 concurrent AI reviewers...</div>
-                    <div class="typewriter-line line-3 delay-2">[WARN] Complex logic detected in AuthModule.
-                        Resolving...</div>
-                    <div class="typewriter-line line-4 delay-3">[SUCCESS] 100+ vulnerabilities patched automatically.
-                    </div>
-                    <div class="typewriter-line line-5 delay-4"><span class="prompt">$</span>
-                        analyze_productivity_metrics</div>
-                    <div class="typewriter-line line-6 delay-5">
-                        <highlight>=> Development speed increased by 900%</highlight>
-                    </div>
-                    <div class="typewriter-line line-7 delay-6"><span class="prompt cursor-blink">_</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Tech Stack Grid -->
-        <section id="ai-stack" class="projects-section" style="padding-bottom: 2rem;">
-            <h2 class="section-heading gradient-text">AI Engineering Arsenal</h2>
-            <div class="projects-grid" style="margin-bottom: 2rem;">
-                
-                <div class="glass-card proj-card" style="border-color: rgba(56, 189, 248, 0.3); box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);">
-                    <div class="proj-title" style="color: #38bdf8;">Agentic Frameworks</div>
-                    <div class="proj-desc">Building autonomous systems capable of complex reasoning, multi-step planning, and tool execution. Designing orchestrators that manage teams of specialized sub-agents.</div>
-                    <div class="tech-tags" style="margin-top: 1.5rem;">
-                        <span>LangChain</span><span>LangGraph</span><span>Spring AI</span>
-                    </div>
-                </div>
-
-                <div class="glass-card proj-card" style="border-color: rgba(168, 85, 247, 0.3); box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);">
-                    <div class="proj-title" style="color: #a855f7;">Data & Retrieval (RAG)</div>
-                    <div class="proj-desc">Architecting robust data pipelines to feed LLMs. Implementing hybrid search (semantic + keyword) across millions of documents to ensure agents have accurate, up-to-date context.</div>
-                    <div class="tech-tags" style="margin-top: 1.5rem;">
-                        <span>PGvector</span><span>Milvus</span><span>ElasticSearch</span><span>RAG</span>
-                    </div>
-                </div>
-
-                <div class="glass-card proj-card" style="border-color: rgba(74, 222, 128, 0.3); box-shadow: 0 0 15px rgba(74, 222, 128, 0.05);">
-                    <div class="proj-title" style="color: #4ade80;">Model Tuning & Applied AI</div>
-                    <div class="proj-desc">Beyond API calls. Fine-tuning local models for specialized tasks, deploying vision models, and integrating open-source AI tools directly into production environments.</div>
-                    <div class="tech-tags" style="margin-top: 1.5rem;">
-                        <span>LoRA</span><span>Unsloth</span><span>Hugging Face</span><span>YOLOv11</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Microservices Visualization Section -->
-        <section id="architecture" class="architecture-section">
-            <h2 class="section-heading gradient-text">Experience in Scalability</h2>
-            <div class="microservices-wrapper">
-                <!-- SVG Grid -->
-                <svg width="100%" height="100%" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" style="position: absolute; top:0; left:0; z-index: 1; overflow: visible;">
-                    <defs>
-                        <!-- Glow filter for packets -->
-                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                        <!-- Gradient for connection lines -->
-                        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
-                            <stop offset="100%" stop-color="rgba(255,255,255,0.05)" />
-                        </linearGradient>
-                    </defs>
-
-                    <!-- Connection Paths -->
-                    <!-- Path: Client to LB -->
-                    <path id="path1" d="M 400 70 L 400 150" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="4,4" />
-                    <!-- Path: LB to Auth -->
-                    <path id="path2" d="M 400 200 C 400 260, 200 260, 200 330" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" class="dash-anim" />
-                    <!-- Path: LB to AI/Data -->
-                    <path id="path3" d="M 400 200 C 400 260, 600 260, 600 330" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" class="dash-anim reverse" />
-                    <!-- Path: Auth to DB -->
-                    <path id="path4" d="M 200 330 C 200 420, 400 420, 400 460" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none" />
-                    <!-- Path: AI/Data to DB -->
-                    <path id="path5" d="M 600 330 C 600 420, 400 420, 400 460" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none" />
-
-                    <!-- Animated Packets Data Flow -->
-                    <circle r="5" fill="#38bdf8" filter="url(#glow)">
-                        <animateMotion dur="2s" repeatCount="indefinite" path="M 400 70 L 400 150" />
-                    </circle>
-                    <circle r="4" fill="#a855f7" filter="url(#glow)">
-                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s" path="M 400 200 C 400 260, 200 260, 200 330" />
-                    </circle>
-                    <circle r="4" fill="#4ade80" filter="url(#glow)">
-                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="1.2s" path="M 400 200 C 400 260, 600 260, 600 330" />
-                    </circle>
-                    <circle r="5" fill="#f43f5e" filter="url(#glow)">
-                        <animateMotion dur="2s" repeatCount="indefinite" begin="1s" path="M 200 330 C 200 420, 400 420, 400 460" />
-                    </circle>
-                    <circle r="5" fill="#f43f5e" filter="url(#glow)">
-                        <animateMotion dur="2s" repeatCount="indefinite" begin="1.8s" path="M 600 330 C 600 420, 400 420, 400 460" />
-                    </circle>
-                </svg>
-
-                <!-- HTML Overlay Nodes -->
-                <div class="ms-node client-node" style="left: 50%; top: 4%;">Client App</div>
-                <div class="ms-node lb-node" style="left: 50%; top: 30%;">API Gateway / LB</div>
-                <div class="ms-node auth-node" style="left: 25%; top: 56%;">Auth Service</div>
-                <div class="ms-node data-node" style="left: 75%; top: 56%;">AI Agent Service</div>
-                <div class="ms-node db-node" style="left: 50%; top: 82%;">Distributed DB</div>
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <div class="section-head reveal">
+                <div class="section-kicker">04 / Projects</div>
+                <h2 class="section-heading">Selected work.</h2>
+                <p class="section-lead">
+                    Production systems and personal builds. Company work is described publicly; personal projects
+                    are open where possible. 30+ open-source projects on GitHub.
+                </p>
             </div>
 
-            <h3 class="section-heading gradient-text" style="font-size: 1.8rem; margin-top: 6rem; margin-bottom: 3rem;">
-                Producer-Consumer Architecture</h3>
-            <div class="producer-consumer-wrapper">
-                <!-- SVG Grid -->
-                <svg width="100%" height="100%" viewBox="0 0 800 180" preserveAspectRatio="xMidYMid meet" style="position: absolute; top:0; left:0; z-index: 1; overflow: visible;">
-                    <!-- Paths using previously defined linearGradient -->
-                    <path id="path-pc-1" d="M 200 90 L 320 90" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="6,6" />
-                    <path id="path-pc-2" d="M 480 90 L 600 90" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-dasharray="6,6" />
-
-                    <!-- Animated Packets -->
-                    <circle r="5" fill="#38bdf8" filter="url(#glow)">
-                        <animateMotion dur="1.5s" repeatCount="indefinite" path="M 200 90 L 320 90" />
-                    </circle>
-                    <circle r="4" fill="#38bdf8" filter="url(#glow)">
-                        <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.75s" path="M 200 90 L 320 90" />
-                    </circle>
-
-                    <circle r="5" fill="#4ade80" filter="url(#glow)">
-                        <animateMotion dur="1.5s" repeatCount="indefinite" path="M 480 90 L 600 90" />
-                    </circle>
-                    <circle r="4" fill="#4ade80" filter="url(#glow)">
-                        <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.75s" path="M 480 90 L 600 90" />
-                    </circle>
-                </svg>
-
-                <div class="ms-node producer-node" style="left: 15%; top: 50%; transform: translate(-50%, -50%);">Work
-                    Producer</div>
-                <div class="ms-node queue-node" style="left: 48%; top: 50%; transform: translate(-50%, -50%); border-radius: 30px; border-style: dashed;">
-                    Message Queue</div>
-                <div class="ms-node consumer-node" style="left: 83%; top: 50%; transform: translate(-50%, -50%);">AI
-                    Consumer Workers</div>
-            </div>
-        </section>
-
-        <!-- Focused Projects -->
-        <section id="projects" class="projects-section">
-            <h2 class="section-heading gradient-text">Selected Company Experiences</h2>
-            <div class="projects-grid" style="margin-bottom: 6rem;">
-                <div class="glass-card proj-card" style="border-color: rgba(74, 222, 128, 0.4); box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);">
-                    <div class="proj-title" style="color: #4ade80;">AI Code Reviewer <span style="font-size: 1rem; color: var(--font-color-2nd); font-weight: 500;">@ Crypto.com</span>
-                    </div>
-                    <div class="proj-desc">Highly autonomous code reviewing system
-                        using LangChain and RAG. Engineered full architecture with a Producer-Consumer message queue to successfully catch
-                        <highlight>100+ critical vulnerabilities</highlight>.
-                        Well-received by Company Devs and Software VPs.
-                    </div>
-                    <div class="tech-tags">
-                        <span>LangChain</span><span>PostgreSQL</span><span>FastAPI</span><span>RAG</span><span>Concurrency</span><span>Queue</span>
-                    </div>
-                </div>
-                <div class="glass-card proj-card" style="border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);">
-                    <div class="proj-title" style="color: #38bdf8;">Blockchain Monitoring <span style="font-size: 1rem; color: var(--font-color-2nd); font-weight: 500;">@ Crypto.com</span>
-                    </div>
-                    <div class="proj-desc">High-performance transaction monitoring microservices handling activity for
-                        <highlight>1.2M+ users</highlight>. Achieved a <highlight>200%</highlight> decrease in execution
-                        latency using advanced optimizations.
-                    </div>
-                    <div class="tech-tags">
-                        <span>NestJS</span><span>AWS</span><span>Prometheus</span><span>Redis</span><span>Async</span><span>Microservice</span>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="section-heading gradient-text">Selected Works</h2>
             <div class="projects-grid">
-                <div class="glass-card proj-card">
-                    <div class="proj-title" style="color: #a855f7;">JishoNotes</div>
-                    <div class="proj-desc">Full-stack Japanese learning webapp with <highlight>dictionary and flashcard
-                            system</highlight>. Built with ElasticSearch, Java Spring, and VueJS.</div>
-                    <div class="tech-tags">
-                        <span>Java Spring</span><span>ElasticSearch</span><span>VueJS</span>
+                <article class="project-card featured reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-green">Personal project</span>
+                        <span class="project-index">01</span>
                     </div>
-                    <div class="github-link" style="margin-top: 2rem;"><a target="_blank" href="https://github.com/vincentIsGood/JishoNotesAPI">🔗 View on GitHub</a></div>
-                </div>
-                <div class="glass-card proj-card">
-                    <div class="proj-title" style="color: #38bdf8;">AdvancedWebServer</div>
-                    <div class="proj-desc">Java web server <highlight>built from scratch</highlight> supporting HTTP/2 &
-                        WebSockets. Demonstrates deep understanding of Java and underlying web technologies.</div>
-                    <div class="tech-tags">
-                        <span>Java</span><span>HTTP/2</span><span>NIO</span><span>WebSockets</span>
+                    <h3 class="project-title">SAGE</h3>
+                    <p class="project-desc">
+                        A personal multi-agent assistant with a lead orchestrator, specialist agents, tool/MCP wiring,
+                        and a streaming web UI. It also powers the chat on this page.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Multi-agent</span><span class="chip">MCP</span><span class="chip">WebSocket</span>
+                        <span class="chip">Tracing</span><span class="chip">Behavior eval</span>
                     </div>
-                    <div class="github-link" style="margin-top: 2rem;"><a target="_blank" href="https://github.com/vincentIsGood/AdvancedWebServer">🔗 View on GitHub</a></div>
-                </div>
+                    <div class="project-footer">
+                        <span class="project-note">Personal project · daily use</span>
+                        <a class="project-link ask-sage-btn" href="#contact">Ask SAGE <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-cyan">Crypto.com</span>
+                        <span class="project-index">02</span>
+                    </div>
+                    <h3 class="project-title">AI Code Reviewer</h3>
+                    <p class="project-desc">
+                        Autonomous code review with LangChain and RAG, backed by a producer-consumer queue. Caught
+                        100+ critical vulnerabilities and was well-received by developers and software VPs.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">LangChain</span><span class="chip">PostgreSQL</span><span class="chip">FastAPI</span>
+                        <span class="chip">RAG</span><span class="chip">Concurrency</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-cyan">Crypto.com</span>
+                        <span class="project-index">03</span>
+                    </div>
+                    <h3 class="project-title">Blockchain Monitoring</h3>
+                    <p class="project-desc">
+                        Transaction monitoring microservices for 1.2M+ users. Achieved a 7x execution-speed increase
+                        through multi-threading and data-structure optimizations.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">NestJS</span><span class="chip">AWS</span><span class="chip">Prometheus</span>
+                        <span class="chip">Redis</span><span class="chip">Microservices</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-violet">Crypto.com</span>
+                        <span class="project-index">04</span>
+                    </div>
+                    <h3 class="project-title">Detection Automation</h3>
+                    <p class="project-desc">
+                        Multi-agent workflows for Detection Engineering: detection-as-code, Sumo Logic CSE rules,
+                        MITRE ATT&amp;CK gap analysis, and noise reduction.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Sumo Logic</span><span class="chip">Terraform</span><span class="chip">ATT&amp;CK</span>
+                        <span class="chip">AgentCore</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-green">Open source</span>
+                        <span class="project-index">05</span>
+                    </div>
+                    <h3 class="project-title">JishoNotes</h3>
+                    <p class="project-desc">
+                        Full-stack Japanese learning webapp with dictionary and flashcards. Java Spring,
+                        ElasticSearch, VueJS.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Java Spring</span><span class="chip">ElasticSearch</span><span class="chip">VueJS</span>
+                    </div>
+                    <div class="project-footer">
+                        <a class="project-link" target="_blank" rel="noopener" href="https://github.com/vincentIsGood/JishoNotesAPI">View on GitHub <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-green">Open source</span>
+                        <span class="project-index">06</span>
+                    </div>
+                    <h3 class="project-title">AdvancedWebServer</h3>
+                    <p class="project-desc">
+                        Java web server built from scratch with HTTP/2 and WebSockets.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Java</span><span class="chip">HTTP/2</span><span class="chip">NIO</span>
+                        <span class="chip">WebSockets</span>
+                    </div>
+                    <div class="project-footer">
+                        <a class="project-link" target="_blank" rel="noopener" href="https://github.com/vincentIsGood/AdvancedWebServer">View on GitHub <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-top">
+                        <span class="project-badge badge-green">Open source</span>
+                        <span class="project-index">07</span>
+                    </div>
+                    <h3 class="project-title">Protocol Clients from Scratch</h3>
+                    <p class="project-desc">
+                        Java Socks5 and SMTP clients built from scratch to understand the protocols at socket level.
+                    </p>
+                    <div class="chip-row">
+                        <span class="chip">Java</span><span class="chip">Socks5</span><span class="chip">SMTP</span>
+                        <span class="chip">Networking</span>
+                    </div>
+                    <div class="project-footer">
+                        <a class="project-link" target="_blank" rel="noopener" href="https://github.com/vincentIsGood/JavaSocks5">Socks5 <span aria-hidden="true">↗</span></a>
+                        <a class="project-link" target="_blank" rel="noopener" href="https://github.com/vincentIsGood/SMTPclient">SMTP <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <div class="glass-card contact-content">
-                <h2 class="section-heading gradient-text" style="margin-bottom: 1rem;">Let's Connect</h2>
-                <p style="font-size: 1.2rem; color: var(--font-color-2nd); margin-bottom: 2rem;">Always open to
-                    discussing AI innovations and backend scaling challenges.</p>
+        <!-- CONTACT -->
+        <section id="contact" class="section contact-section">
+            <div class="contact-card reveal">
+                <div class="section-kicker">05 / Contact</div>
+                <h2 class="section-heading">Let's build something that works.</h2>
+                <p class="contact-lead">
+                    Open to conversations about agentic AI, detection engineering, backend scaling, or the
+                    evaluation work that makes AI systems trustworthy.
+                </p>
                 <div class="contact-links">
-                    <a class="contact-btn" href="mailto:vincentko324@gmail.com">📫 vincentko324@gmail.com</a>
-                    <a class="contact-btn" href="https://www.linkedin.com/in/vincent-ko-71b4a9204/" target="_blank">💼
-                        LinkedIn</a>
-                    <a class="contact-btn" href="https://github.com/vincentIsGood" target="_blank">💻 GitHub</a>
-                    <a class="contact-btn" href="/v/i/n/c/e/n/t/cvpage.html">📄 Full Resume</a>
+                    <a class="contact-btn" href="mailto:vincentko324@gmail.com">
+                        <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.4l8 5.6 8-5.6V6H4Zm0 12h16V9.6l-8 5.6-8-5.6V18Z"/></svg></span>
+                        vincentko324@gmail.com
+                    </a>
+                    <a class="contact-btn" href="https://www.linkedin.com/in/vincent-ko-71b4a9204/" target="_blank" rel="noopener">
+                        <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9V9Z"/></svg></span>
+                        LinkedIn
+                    </a>
+                    <a class="contact-btn" href="https://github.com/vincentIsGood" target="_blank" rel="noopener">
+                        <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5Z"/></svg></span>
+                        GitHub
+                    </a>
+                    <a class="contact-btn" href="/v/i/n/c/e/n/t/cvpage.html">
+                        <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2Zm8 1.5V8h4.5L14 3.5ZM8 12h8v2H8v-2Zm0 4h8v2H8v-2Z"/></svg></span>
+                        Full Resume
+                    </a>
+                </div>
+                <div class="contact-note">
+                    Prefer a conversation? The SAGE bot in the corner can answer questions about my background.
                 </div>
             </div>
         </section>
 
-        <footer class="glass-panel" style="margin-top: 4rem; padding: 2rem; display: flex; justify-content: space-between; align-items: center; border-radius: 0; background: transparent; border: none; box-shadow: none; border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="left" style="color: var(--font-color-2nd);">Design by Vincent Ko</div>
-            <div class="right" style="color: var(--font-color-2nd);">Made by Gemini Pro</div>
+        <footer class="site-footer">
+            <div class="footer-left">Design &amp; build by Vincent Ko</div>
+            <div class="footer-right">Chat powered by <span class="footer-sage">SAGE</span> · Last updated Oct 2026</div>
         </footer>
-    </div>
+    </main>
 
     <!-- AI Chatbot UI -->
     <div class="chatbot-container">
-        <div class="chatbot-welcome-bubble">Ask SAGE about my experience!</div>
+        <div class="chatbot-welcome-bubble">Ask SAGE about my AI + security work!</div>
         <div class="chatbot-window glass-panel hidden">
             <div class="chatbot-header">
                 <div class="chatbot-title">AI Assistant SAGE</div>
@@ -302,9 +544,9 @@
                 <div class="message bot">Hello there! This is SAGE. Do you want me to introduce my creator Vincent Ko to you?</div>
             </div>
             <div class="chatbot-input-area">
-                <input type="text" placeholder="eg. Is he a good AI Engineer candidate?" class="chatbot-input">
+                <input type="text" placeholder="eg. Is he a good AI Engineer candidate?" class="chatbot-input" aria-label="Message SAGE">
                 <button class="chatbot-send" aria-label="Send message">
-                    <svg viewBox="0 0 24 24">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                     </svg>
                 </button>
@@ -312,7 +554,7 @@
         </div>
         <button class="chatbot-trigger" aria-label="Open AI chat">
             <div class="chatbot-notification-dot"></div>
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
             </svg>
         </button>
@@ -321,18 +563,85 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
     <script src="./js/chatbot.js"></script>
     <script>
-        // Cto manage menu toggling
-        document.querySelectorAll('.collapsable-menu .item').forEach(el => {
-            el.addEventListener('click', () => {
-                document.querySelector('.collapsable-menu').classList.add('hidden');
-            });
-        });
-        document.addEventListener('click', (e) => {
-            const menuBtn = document.querySelector('.menu-button');
-            if (menuBtn && !menuBtn.contains(e.target)) {
-                document.querySelector('.collapsable-menu').classList.add('hidden');
+        (function () {
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.menu-button');
+            const menu = document.querySelector('.collapsable-menu');
+
+            function setMenu(open) {
+                if (!menu || !menuButton) return;
+                menu.classList.toggle('hidden', !open);
+                menuButton.setAttribute('aria-expanded', String(open));
             }
-        });
+
+            if (menuButton) {
+                menuButton.addEventListener('click', function (event) {
+                    if (event.target.closest('.collapsable-menu')) return;
+                    setMenu(menu.classList.contains('hidden'));
+                });
+                menuButton.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setMenu(menu.classList.contains('hidden'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('.collapsable-menu .item').forEach(function (item) {
+                item.addEventListener('click', function () { setMenu(false); });
+            });
+
+            document.addEventListener('click', function (event) {
+                if (menuButton && !menuButton.contains(event.target)) setMenu(false);
+            });
+
+            // Experience tabs
+            const tabButtons = Array.from(document.querySelectorAll('.tab-button'));
+            const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+
+            tabButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const targetId = 'tab-' + button.dataset.tab;
+                    tabButtons.forEach(function (other) {
+                        const active = other === button;
+                        other.classList.toggle('active', active);
+                        other.setAttribute('aria-selected', String(active));
+                    });
+                    tabPanels.forEach(function (panel) {
+                        panel.classList.toggle('active', panel.id === targetId);
+                    });
+                });
+            });
+
+            // Reveal on scroll
+            const revealElements = Array.from(document.querySelectorAll('.reveal'));
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                revealElements.forEach(function (element) { observer.observe(element); });
+            } else {
+                revealElements.forEach(function (element) { element.classList.add('visible'); });
+            }
+
+            // Open the SAGE chat from any "Ask SAGE" button
+            document.querySelectorAll('.ask-sage-btn').forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    const chatWindow = document.querySelector('.chatbot-window');
+                    const trigger = document.querySelector('.chatbot-trigger');
+                    if (!chatWindow || !trigger) return;
+                    if (chatWindow.classList.contains('hidden')) {
+                        event.preventDefault();
+                        trigger.click();
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 

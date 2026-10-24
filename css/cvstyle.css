@@ -321,6 +321,78 @@ a.underline{
     white-space: nowrap;
 }
 
+/* Mobile layout: keep the QR code from covering the name/header */
+@media screen and (max-width: 700px) {
+    .content-wrapper > * {
+        padding: 1.2rem;
+        padding-top: 2rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .smaller-title {
+        font-size: 1.4rem;
+    }
+
+    .qr-code-link {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 1.4rem;
+    }
+
+    .qr-code {
+        width: 96px;
+        height: 96px;
+        border-width: 4px;
+    }
+
+    .qr-code svg {
+        width: 96px;
+        height: 96px;
+    }
+
+    .qr-wrapper {
+        padding-top: 0;
+    }
+
+    .qr-wrapper::before,
+    .qr-wrapper::after {
+        display: none;
+    }
+
+    .horizontal {
+        flex-direction: column;
+    }
+
+    .horizontal > * {
+        padding: 0;
+    }
+
+    .skills-table td {
+        padding-right: 0.6rem;
+    }
+
+    /* The lower skills table has three columns; stack them on narrow screens. */
+    .horizontal + .skills-table {
+        display: block;
+    }
+
+    .horizontal + .skills-table tr {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .horizontal + .skills-table td {
+        display: block;
+        padding-left: 0 !important;
+        padding-right: 0;
+    }
+}
+
 /* Print Optimizations */
 @media print {
     @page {

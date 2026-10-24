@@ -1,4 +1,4 @@
-<html>
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,12 @@
     <meta name="author" content="Vincent Ko">
     <link rel="stylesheet" href="/css/cvstyle.css">
     <link rel="stylesheet" href="/css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', Arial, Helvetica, sans-serif;
+        }
+
         :root {
             --bg-gradient-1: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
             --bg-gradient-2: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
@@ -34,6 +39,7 @@
             </a>
             <section>
                 <div class="title">Vincent Ko</div>
+                <div class="sub-title-nopad">Crypto.com | AIエンジニア / セキュリティエンジニア</div>
                 <div class="sub-title-nopad">香港大学 | コンピュータ・サイエンス | 香港</div>
                 <div class="header-info">
                     <a href="mailto:vincentko324@gmail.com">vincentko324@gmail.com</a>
@@ -58,27 +64,31 @@
                 <div class="smaller-title">自己紹介</div>
                 <div class="minor-desc" style="margin-bottom: 0.8rem; font-style: italic;">"AIは使いこなせてこそ強力。"</div>
                 <div style="padding-left: 0.5rem; border-left: 3px solid var(--accent-color);">
-                    <div class="desc">- バックエンド</div>
-                    <div class="desc">- スケーラブルなマイクロサービスの開発</div>
-                    <div class="desc">- ブロックチェーン取引のモニタリング</div>
-                    <div class="desc">- 会社全体で使用するAIエージェントの開発</div>
-                    <div class="desc">- 多様なスキルを持つ<span style="color: var(--accent-color);">AIエージェントのチーム</span>を管理している</div>
-                    <div class="desc">- 開発プロセスの<span style="color: var(--accent-color);">90%</span>がAIで自動化できる</div>
-                    <div class="desc">- の速度向上を実現</div>
+                    <div class="desc">- Crypto.comのセキュリティチーム、Detection Engineering部門で AI Engineer + Security Engineer</div>
+                    <div class="desc">- 検出エンジニアリングのワークフローを高度に自動化</div>
+                    <div class="desc">- マルチエージェントのユースケース設計・開発、正確なオーケストレーション</div>
+                    <div class="desc">- 本番RAGシステム、MCPの接続・開発</div>
+                    <div class="desc">- エージェントのセキュリティ（アクセス制御、書き込みツールのガード）、トレーシング＆オブザーバビリティ</div>
+                    <div class="desc">- エージェント評価（フォールバックポリシー、タスク成果、「行動」評価、正確なツール使用）</div>
+                    <div class="desc">- Detection Engineering: Sumo Logic SIEM (CSE)、Detection as Code (Terraform)、MITRE ATT&amp;CKギャップ分析、誤検知・ノイズ削減</div>
                     <div class="desc">- 最適化により: </div>
                     <div class="desc">-> バックエンド速度 <span style="color: var(--accent-color);">7倍</span> 向上</div>
-                    <div class="desc">-> AIエージェント応答時間 <span style="color: var(--accent-color);">25%</span> 短縮 (12->9分)</div>
-                    <div class="desc">-> マルチ・エージェントによるコスト <span style="color: var(--accent-color);">23%</span> 減少</div>
+                    <div class="desc">-> AIエージェント応答時間 <span style="color: var(--accent-color);">48%</span> 短縮 (12->6.3分)</div>
+                    <div class="desc">-> マルチ・エージェントによるコスト <span style="color: var(--accent-color);">51%</span> 削減 ($1.02->.5)</div>
+                    <div class="desc">-> エージェント間通信のペイロード <span style="color: var(--accent-color);">9.25倍</span> 縮小 (13994文字 -> 1303文字、性能劣化なし)</div>
                 </div>
                 <div style="padding-top: 1rem;">
                     <div class="desc" style="font-weight: 500; margin-bottom: 0.5rem;">個人的に</div>
-                    <div class="desc">- 自分のエージェント <a href="https://vincent.strsx.com" style="color: var(--accent-color); text-decoration: underline;">SAGE</a> (<a href="https://vincent.strsx.com" style="color: var(--accent-color); text-decoration: underline;">リンク</a>) の開発</div>
-                    <div class="desc">- GenAIの探索 (Gemini, Claude Code, Grok, Ollama, Hugging Face, etc.)</div>
+                    <div class="desc">- 自分のエージェント <a href="https://vincent.strsx.com" style="color: var(--accent-color); text-decoration: underline;">SAGE</a> の開発（個人利用。このページのチャットはSAGEのWebSocketボットで動作）</div>
+                    <div class="desc">- GenAIの日常利用 (OpenCode, Oh My Openagent, etc.)</div>
                     <div class="desc">- Unslothで LoRA LLM <span style="color: var(--accent-color);">Fine-tuning</span></div>
                     <div class="desc">- 他のAI (YOLOv11, Stable Diffusion, Text 2 Speech)</div>
+                    <div class="desc">- DGX Spark investor、ローカルモデルを楽しむ</div>
                     <div class="desc">- ソフト開発が１つの趣味。<span style="color: var(--accent-color);">30+</span>のオープンソースプロジェクトの作成</div>
                     <div class="desc">- ゼロから実装：<a href="https://github.com/vincentIsGood/AdvancedWebServer" style="color: var(--accent-color);">HTTP/2 server</a>, <a href="https://github.com/vincentIsGood/JavaSocks5" style="color: var(--accent-color);">Socks5</a>, <a href="https://github.com/vincentIsGood/SMTPclient" style="color: var(--accent-color);">SMTP</a></div>
-                    <div class="desc">- Spring Boot & VueJSで日本語学習ウェブアプリの開発 (名は <a href="https://github.com/vincentIsGood/JishoNotesAPI" style="color: var(--accent-color);">JishoNotes</a>)</div>
+                    <div class="desc">- Java好き &amp; Java Spring Bootアプリ開発 (Github参照)</div>
+                    <div class="desc">- Spring Boot &amp; VueJSで日本語学習ウェブアプリの開発 (名は <a href="https://github.com/vincentIsGood/JishoNotesAPI" style="color: var(--accent-color);">JishoNotes</a>)</div>
+                    <div class="desc">- JLPT N2 (B2)</div>
                 </div>
                 <div style="padding-top: 1rem;">
                     <div class="tools-section">
@@ -106,10 +116,12 @@
                         <span class="badge">Docker Compose</span>
                         <span class="badge">Kafka</span>
                         <span class="badge">Github Actions</span>
+                        <span class="badge">Terraform</span>
+                        <span class="badge">Spacelift</span>
                     </div>
                     <div class="tools-section">
                         <span class="tool-category">CLOUD:</span>
-                        <span class="badge">AWS</span>
+                        <span class="badge">AWS (ECS, SQS, Lambda, AgentCore)</span>
                         <span class="badge">Azure</span>
                         <span class="badge">Oracle</span>
                     </div>
@@ -117,10 +129,21 @@
                         <span class="tool-category">AGENT:</span>
                         <span class="badge">LangChain</span>
                         <span class="badge">LangGraph</span>
+                        <span class="badge">Bedrock AgentCore</span>
                         <span class="badge">Spring AI</span>
+                        <span class="badge">LiteLLM</span>
                         <span class="badge">RAG</span>
+                        <span class="badge">MCP</span>
                         <span class="badge">Claude Code</span>
                         <span class="badge">Copilot</span>
+                    </div>
+                    <div class="tools-section">
+                        <span class="tool-category">SECURITY:</span>
+                        <span class="badge">Sumo Logic CSE</span>
+                        <span class="badge">MITRE ATT&amp;CK</span>
+                        <span class="badge">Detection as Code</span>
+                        <span class="badge">Alert Triage</span>
+                        <span class="badge">FP / Noise reduction</span>
                     </div>
                     <div class="tools-section">
                         <span class="tool-category">COMM:</span>
@@ -134,7 +157,48 @@
                 <div class="smaller-title">職歴</div>
                 <section>
                     <div class="item company">Crypto.com</div>
-                    <div class="item job-title">バックエンド & エージェントシステムエンジニア</div>
+                    <div class="item job-title">AIエンジニア、セキュリティエンジニア</div>
+                    <div class="item date">2026年7月 - 現在</div>
+                    <div class="item sign">香港 · ハイブリッド</div>
+                    <div style="padding-left: 0.5rem; border-left: 2px solid #ddd; margin-top: 0.5rem;">
+                        <div class="desc" style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">Detection Engineering — AI自動化</div>
+                        <div class="desc">- Crypto.comのセキュリティチーム、Detection Engineering部門で AI Engineer + Security Engineer</div>
+                        <div class="desc">- 検出エンジニアリングのワークフローを高度に自動化</div>
+                        <br>
+                        <div class="desc" style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">エージェントAI &amp; 自動化</div>
+                        <div class="desc">- マルチエージェントのユースケース設計・開発</div>
+                        <div class="desc">- 正確なマルチエージェント・オーケストレーション</div>
+                        <div class="desc">- 本番RAGシステム、MCPの接続・開発</div>
+                        <div class="desc">- 高品質な参照資料とツール出力</div>
+                        <div class="desc">- エージェントの自己改善メカニズム</div>
+                        <div class="desc">- エージェント・セキュリティ（アクセス制御、書き込みツールのガードと保護）</div>
+                        <div class="desc">- エージェントのトレーシング＆オブザーバビリティ</div>
+                        <div class="desc">- エージェント評価（フォールバックポリシー、タスク成果、「行動」評価、正確なツール使用など）</div>
+                        <br>
+                        <div class="desc" style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">Detection Engineering</div>
+                        <div class="desc">- Sumo Logic SIEM (CSE)</div>
+                        <div class="desc">- Detection as Code (Terraform)</div>
+                        <div class="desc">- ログソースの接続</div>
+                        <div class="desc">- セキュリティ運用（検出エンジニアリング、アラートトリアージ）</div>
+                        <div class="desc">- 新しい検出ユースケースの調査（大規模ログ分析）</div>
+                        <div class="desc">- MITRE ATT&amp;CKギャップ分析</div>
+                        <div class="desc">- 誤検知・ノイズ削減</div>
+                        <div class="desc">- CSEルールの微調整</div>
+                        <br>
+                        <div class="desc" style="color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem;">プラットフォーム &amp; ツール</div>
+                        <div class="desc">- LiteLLM</div>
+                        <div class="desc">- Terraform + Spacelift</div>
+                        <div class="desc">- AWS AgentCore, ECS, SQS など</div>
+                        <div class="desc">- MCPの実装とデプロイ</div>
+                        <div class="desc">- エージェントループの最適化</div>
+                        <div class="desc">- エージェントの行動を観察・特定・改善</div>
+                        <br>
+                        <div class="desc">- チーム間のコミュニケーションを最も重視</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="item company">Crypto.com</div>
+                    <div class="item job-title">セキュリティエンジニア</div>
                     <div class="item date">2024年6月 - 2026年3月</div>
                     <div class="item sign">ハイブリッド</div>
                     <div style="padding-left: 0.5rem; border-left: 2px solid #ddd; margin-top: 0.5rem;">
@@ -159,6 +223,7 @@
                         <div class="desc">- 会社の入出金取引と取引ボリュームのモニタリング・ソフトの開発</div>
                         <div class="desc">- Claude Code Agentsで<span style="color: var(--accent-color);">100+</span>プロジェクトの保守とデプロイを<span style="color: var(--accent-color);">100%</span>で自動化</div>
                         <div class="desc">- AIによる自動化を推進役</div>
+                        <div class="desc">- ブロックチェーン・プロジェクトのAI自動化により開発時間を<span style="color: var(--accent-color);">100%</span>短縮 (2-3週間 -> 1週間)</div>
                         <div class="desc">- Prometheus, Grafana</div>
                         <br>
                         <div class="desc">- 二重払い攻撃の報告に成功し、取引ボリュームも把握している</div>

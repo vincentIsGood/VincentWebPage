@@ -170,7 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!aiWord || !container || !trigger) return;
 
         const isHero = window.scrollY < 50 && windowEl.classList.contains('hidden');
-        
+        container.classList.toggle('hero-mode', isHero);
+
         if (isHero) {
             const wordRect = aiWord.getBoundingClientRect();
             const containerRect = container.getBoundingClientRect();
